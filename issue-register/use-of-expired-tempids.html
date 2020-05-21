@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html><html><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&amp;family=Roboto+Slab:wght@400;700&amp;family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet" data-no-mirror="">
+        <link href="/assets/css/styles.css" rel="stylesheet">
+
+        <script src="/mirror/code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="/mirror/stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="/mirror/cdn.jsdelivr.net/npm/quicklink@2.0.0/dist/quicklink.umd.js"></script>
+        
+		
+
+        <title>COVIDSafe.watch - Unique IDs are broadcast long after they expire</title>
+    </head>
+    <body>
+        <div class="flex-grow-1 d-flex flex-column">
+            <div class="bg-nav">
+                <div class="container-xl py-3">
+                    <div class="row">
+                        <div class="offset-lg-2 col-12 col-lg-8 px-0">
+                            <nav class="navbar navbar-expand-md navbar-light align-items-start">
+                                <a class="navbar-brand" href="/">COVIDSafe.watch</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-topnav" aria-controls="collapse-topnav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div id="collapse-topnav" class="collapse navbar-collapse flex-wrap">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li id="nav-web" class="nav-item">
+                                            <a class="nav-link text-blue font-weight-light font-size-lg" href="/issue-register">Issue Register</a>
+                                        </li>
+                                        <li id="nav-web" class="nav-item">
+                                            <a class="nav-link text-blue font-weight-light font-size-lg" href="/senate-submissions">Senate Submissions</a>
+                                        </li>
+                                        <li id="nav-web" class="nav-item">
+                                            <a class="nav-link text-blue font-weight-light font-size-lg" href="/about">About</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://discord.gg/4xr7AW5"><i class="fab fa-discord"></i>Discuss</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://twitter.com/covidsafewatch"><i class="fab fa-twitter"></i>Twitter</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://www.facebook.com/covidsafewatch"><i class="fab fa-facebook"></i>Facebook</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://github.com/covidsafewatch"><i class="fab fa-github"></i> GitHub</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="titlebar" class="py-4">
+                <div class="container-xl">
+                    <div class="row">
+                        <div class="offset-md-3 offset-lg-2 offset-lg-2 col-12 col-lg-8 px-3 px-lg-0 w-100 d-flex align-items-end">
+                            <div class="flex-grow-1">
+                                <div class="breadcrumbs text-uppercase d-flex flex-column-reverse flex-md-row-reverse justify-content-md-end">
+                                            <span><a href="/issue-register/use-of-expired-tempids">Unique IDs are broadcast long after they expire</a></span>
+                                </div>
+                                <div class="text-white m-0 title">Unique IDs are broadcast long after they expire</div>
+                            </div>
+                                <div class="navbar navbar-expand-md navbar-dark p-0">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-sidebar" aria-controls="collapse-sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-grow-1 d-flex flex-column">                
+                <div class="flex-grow-1 d-flex flex-column">
+                        <div class="container-xl flex-grow-1 d-flex flex-column">
+                            <div class="row flex-grow-1 align-items-stretch">
+                                        <div class="col-md-3 col-lg-2 bg-body">
+                                            <div id="collapse-sidebar" class="sidebar collapse px-0 px-md-3 pt-3">
+                                            </div>
+                                        </div>
+                                        <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
+                                            
+<div class="pb-3 mb-3 border-bottom">
+    <div><strong>Reported At:</strong> Sunday, May 17, 2020</div>
+    <div><strong>Resolved At:</strong> Monday, January 1, 0001</div>
+    <div><strong>Case Number: </strong> </div>
+    <div><strong>Status: </strong> Disclosed</div>
+</div>
+
+<h1 id="overview">Overview</h1>
+<p>There are two issues in the mobile COVIDSafe apps that allow for Unique IDs / TempIDs to be broadcast after they expire.</p>
+<p>The first issue relates to how the iOS app obtains new TempIDs.</p>
+<p>The second issue identifies the parts of the codebase where the apps continue to use TempIDs that it already knows have expired.</p>
+<p>The use of TempIDs beyond their 2-hour lifespan may make it easier for third-parties to track COVIDSafe app users.</p>
+<h1 id="obtaining-new-tempids-on-ios">Obtaining new TempIDs on iOS</h1>
+<p>When requesting a TempID from the National COVIDSafe Data Store, the response contains three fields:</p>
+<ol>
+<li>The TempID itself.</li>
+<li>A refresh time, which is 1 hour from the current time, after which the application should attempt to obtain a new TempID.</li>
+<li>An expiry time, which is 2 hours from the current time, after which the application must cease to use this TempID.</li>
+</ol>
+<p>This interpretation of these fields is supported by the Android codebase, which includes the comment <code>// Only attempt to write BM back to peripheral if it is still valid</code> in <a href="https://github.com/AU-COVIDSafe/mobile-android/blob/b827cf3ccef72a3d38c6fc37466a99868823540f/app/src/main/java/au/gov/health/covidsafe/streetpass/StreetPassWorker.kt#L586">StreetPassWorker.kt#L586</a>, as well as the various logging messages in both the iOS and Android codebase.</p>
+<p>In the Android app, the app appears to set up a timer to obtain a new TempID after the refresh time is reached. However, the iOS app does not do this, and only attempts to obtain a new TempID once the <em>expiry</em> time is reached.</p>
+<p>This means that if there are any intermittent communications issues, such as a loss of network connectivity or server outage, the Android app has a whole hour as a grace window to attempt to re-establish communications and obtain a new TempID. However, the iOS app has no such grace window, and immediately has only two choices - broadcast an expired TempID, or broadcast nothing.</p>
+<h1 id="using-expired-tempids">Using Expired TempIDs</h1>
+<p>In both these codebases, the app will continue to broadcast an expired TempID after it has expired, if a new one cannot be obtained.</p>
+<p>In the Android codebase, this is due to the function <code>bmValid</code>, which is supposed to check the validity of a Broadcast Message (BM), i.e. a TempID, always returning true in <a href="https://github.com/AU-COVIDSafe/mobile-android/blob/696e4ed498623a763b3fefc6982d2567691ea48d/app/src/main/java/au/gov/health/covidsafe/Utils.kt#L245">Utils.kt#L245</a>, <em>even if it has determined just two lines above that the TempID has indeed already expired.</em> Therefore, if the app determines that the TempID has expired, it will nevertheless continue to re-use the old TempID indefinitely.</p>
+<p>In the iOS codebase, this is due to the function <code>fetchTempIdFromApi</code> returning the previously-acquired TempID if any error is encountered talking to the National COVIDSafe Data Store. This behaviour is defined in <a href="https://github.com/AU-COVIDSafe/mobile-ios/blob/3640e52eb2c29b55a8daab304c214750c389d1b2/CovidSafe/EncounterMessageManager.swift#L97-L107">EncounterMessageManager.swift#L97-107</a>. This function is called by <code>getAdvertisementPayload</code> when the TempID has expired, and can therefore return a "new" token whose expiry is never re-evaluated. Therefore, if the app determines that the TempID has expired, and fails to obtain a new TempID, it will nevertheless continue to re-use the old TempID indefinitely.</p>
+<h1 id="relevance-to-privacy-policy">Relevance to Privacy Policy</h1>
+<p>Combining these two issues means that:</p>
+<ul>
+<li>The Android app has only an hour tolerance for intermittent networking or client-server communication, and if the issue persists beyond the expiry then it will continue to broadcast an expired TempID indefinitely. If the issue is resolved between the refresh and expiry times then the app still performs as expected.</li>
+<li>The iOS app has <em>zero</em> tolerance for intermittent networking or client-server communication, if the issue persists beyond the expiry then it will continue to broadcast an expired TempID indefinitely.</li>
+</ul>
+<p>This appears to be in breach of the <a href="https://www.health.gov.au/using-our-websites/privacy/privacy-policy-for-covidsafe-app#when-you-use-covidsafe">Privacy Policy for COVIDSafe App</a>, which clearly states that:</p>
+<blockquote>
+<p>An encrypted user ID will be created every 2 hours. This will be logged in the National COVIDSafe data store (<strong>data store</strong>), operated by the Digital Transformation Agency, in case you need to be identified for contact tracing.</p>
+</blockquote>
+<p>Quite clearly, from the above behaviours, an encrypted user ID may not necessarily be created every 2 hours, such as users on iPods or iPads away from their home Wi-Fi, users with Airplane Mode in cinemas, users in shopping centers or other building that have weak cellular signals due to thick walls or underground levels, server outages, connections pending captive portals, etc.</p>
+<p>This also appears to run somewhat contrary to the <a href="https://www.health.gov.au/resources/publications/covidsafe-application-privacy-impact-assessment">Privacy Impact Assessment</a>, which states:</p>
+<blockquote>
+<p>8.17 We understand that the National COVIDSafe Data Store will automatically generate new Unique IDs for each User every two hours and send these new Unique IDs to the User’s App.</p>
+</blockquote>
+<blockquote>
+<p>8.18 The App will only accept the new Unique IDs if it is open and running. If the App successfully accepts the new Unique ID, an automatic message will be generated and sent back to the National COVIDSafe Data Store. This message will only effectively indicate a “yes (new Unique ID successfully delivered)” response to the National COVIDSafe Data Store. If the App is not open and running, it will not be able to accept a new Unique ID. It will continue to store the previous Unique ID and use this when the App is opened, until a new Unique ID is generated and accepted.</p>
+</blockquote>
+<h1 id="impact">Impact</h1>
+<p>As has been interpreted from the code and has also been observed from performing functional testing on a running app:</p>
+<ol>
+<li>There are a range of actual and potential scenarios in which the app is open and running, but is still not able to accept a new Unique ID.</li>
+<li>The iOS app does not even make a best-effort attempt to obtain new Unique IDs before the old one has expired.</li>
+<li>Both the iOS and Android apps can (and do) broadcast expired TempIDs.</li>
+<li>In these scenarios, users broadcasting TempIDs longer than their expiry become quite easy to track with third-party tools, which may amount to a breach of privacy.</li>
+</ol>
+<h1 id="recommendations">Recommendations</h1>
+<ol>
+<li>Prevent the broadcast of expired TempIDs,</li>
+<li>Display a warning to the user to connect to the internet if the TempID has expired and the app is unable to obtain a fresh one,</li>
+<li>Restore the original Singapore (OpenTrace) behaviour of downloading a large batch of TempIDs and cycling through them, instead of downloading them one at a time, and</li>
+<li>On iOS, make use of the window between the TempID refresh time and its expiry time to obtain a new TempID.</li>
+</ol>
+<h1 id="timeline">Timeline</h1>
+<ul>
+<li>17th May 2020: Reported to support@covidsafe.gov.au</li>
+<li>18th May 2020: Response confirming receipt and that this has been passed on to the development team.</li>
+</ul>
+
+
+                                        </div>
+                                <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
+                                            <div class="border-bottom mb-3">
+                                                <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#overview">Overview</a></p>
+                                                    <p class="small"><a href="#obtaining-new-tempids-on-ios">Obtaining new TempIDs on iOS</a></p>
+                                                    <p class="small"><a href="#using-expired-tempids">Using Expired TempIDs</a></p>
+                                                    <p class="small"><a href="#relevance-to-privacy-policy">Relevance to Privacy Policy</a></p>
+                                                    <p class="small"><a href="#impact">Impact</a></p>
+                                                    <p class="small"><a href="#recommendations">Recommendations</a></p>
+                                                    <p class="small"><a href="#timeline">Timeline</a></p>
+                                            </div>
+                                        <p class="small font-weight-bold"><a href="https://github.com/covidsafewatch/website/edit/develop/input/issue-register/use-of-expired-tempids.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="p-3 text-white">
+            <div class="container-xl">
+                We want your involvement and contributions. Join the <a href="https://discord.gg/4xr7AW5">discord community</a>, introduce yourself and ask how you can help!
+            </div>
+        </div>
+        
+		
+    
+</body></html>

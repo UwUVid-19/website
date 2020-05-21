@@ -4,7 +4,7 @@
 	<title />
 	<link rel="self" href="https://covidsafe.watch/" />
 	<rights>2020</rights>
-	<updated>2020-05-21T04:52:17Z</updated>
+	<updated>2020-05-21T08:48:43Z</updated>
 	<entry>
 		<id>https://covidsafe.watch/issue-register/you-have-covid-text-caused-public-panic</id>
 		<title>You have COVID text caused public panic</title>
@@ -34,6 +34,71 @@
 &lt;?# Twitter 1258014478978842625 /?&gt;
 </content>
 		<summary>&lt;p&gt;When a user taps the “upload my data” button the next screen asserts “You have tested positive for COVID-19” which may be a false assertion and cause confusion. This text needs changing. Since the user is only supposed to upload data when asked to by a health official (see the previous screen), this statement should reiterate that data should not be uploaded UNLESS you have tested positive. It’s possible that uploading data without having tested positive will result in unnecessary and false notifications being sent to other users&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/use-of-expired-tempids</id>
+		<title>Unique IDs are broadcast long after they expire</title>
+		<link href="https://covidsafe.watch/issue-register/use-of-expired-tempids" />
+		<updated />
+		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
+&lt;p&gt;There are two issues in the mobile COVIDSafe apps that allow for Unique IDs / TempIDs to be broadcast after they expire.&lt;/p&gt;
+&lt;p&gt;The first issue relates to how the iOS app obtains new TempIDs.&lt;/p&gt;
+&lt;p&gt;The second issue identifies the parts of the codebase where the apps continue to use TempIDs that it already knows have expired.&lt;/p&gt;
+&lt;p&gt;The use of TempIDs beyond their 2-hour lifespan may make it easier for third-parties to track COVIDSafe app users.&lt;/p&gt;
+&lt;h1 id="obtaining-new-tempids-on-ios"&gt;Obtaining new TempIDs on iOS&lt;/h1&gt;
+&lt;p&gt;When requesting a TempID from the National COVIDSafe Data Store, the response contains three fields:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The TempID itself.&lt;/li&gt;
+&lt;li&gt;A refresh time, which is 1 hour from the current time, after which the application should attempt to obtain a new TempID.&lt;/li&gt;
+&lt;li&gt;An expiry time, which is 2 hours from the current time, after which the application must cease to use this TempID.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This interpretation of these fields is supported by the Android codebase, which includes the comment &lt;code&gt;// Only attempt to write BM back to peripheral if it is still valid&lt;/code&gt; in &lt;a href="https://github.com/AU-COVIDSafe/mobile-android/blob/b827cf3ccef72a3d38c6fc37466a99868823540f/app/src/main/java/au/gov/health/covidsafe/streetpass/StreetPassWorker.kt#L586"&gt;StreetPassWorker.kt#L586&lt;/a&gt;, as well as the various logging messages in both the iOS and Android codebase.&lt;/p&gt;
+&lt;p&gt;In the Android app, the app appears to set up a timer to obtain a new TempID after the refresh time is reached. However, the iOS app does not do this, and only attempts to obtain a new TempID once the &lt;em&gt;expiry&lt;/em&gt; time is reached.&lt;/p&gt;
+&lt;p&gt;This means that if there are any intermittent communications issues, such as a loss of network connectivity or server outage, the Android app has a whole hour as a grace window to attempt to re-establish communications and obtain a new TempID. However, the iOS app has no such grace window, and immediately has only two choices - broadcast an expired TempID, or broadcast nothing.&lt;/p&gt;
+&lt;h1 id="using-expired-tempids"&gt;Using Expired TempIDs&lt;/h1&gt;
+&lt;p&gt;In both these codebases, the app will continue to broadcast an expired TempID after it has expired, if a new one cannot be obtained.&lt;/p&gt;
+&lt;p&gt;In the Android codebase, this is due to the function &lt;code&gt;bmValid&lt;/code&gt;, which is supposed to check the validity of a Broadcast Message (BM), i.e. a TempID, always returning true in &lt;a href="https://github.com/AU-COVIDSafe/mobile-android/blob/696e4ed498623a763b3fefc6982d2567691ea48d/app/src/main/java/au/gov/health/covidsafe/Utils.kt#L245"&gt;Utils.kt#L245&lt;/a&gt;, &lt;em&gt;even if it has determined just two lines above that the TempID has indeed already expired.&lt;/em&gt; Therefore, if the app determines that the TempID has expired, it will nevertheless continue to re-use the old TempID indefinitely.&lt;/p&gt;
+&lt;p&gt;In the iOS codebase, this is due to the function &lt;code&gt;fetchTempIdFromApi&lt;/code&gt; returning the previously-acquired TempID if any error is encountered talking to the National COVIDSafe Data Store. This behaviour is defined in &lt;a href="https://github.com/AU-COVIDSafe/mobile-ios/blob/3640e52eb2c29b55a8daab304c214750c389d1b2/CovidSafe/EncounterMessageManager.swift#L97-L107"&gt;EncounterMessageManager.swift#L97-107&lt;/a&gt;. This function is called by &lt;code&gt;getAdvertisementPayload&lt;/code&gt; when the TempID has expired, and can therefore return a &amp;quot;new&amp;quot; token whose expiry is never re-evaluated. Therefore, if the app determines that the TempID has expired, and fails to obtain a new TempID, it will nevertheless continue to re-use the old TempID indefinitely.&lt;/p&gt;
+&lt;h1 id="relevance-to-privacy-policy"&gt;Relevance to Privacy Policy&lt;/h1&gt;
+&lt;p&gt;Combining these two issues means that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Android app has only an hour tolerance for intermittent networking or client-server communication, and if the issue persists beyond the expiry then it will continue to broadcast an expired TempID indefinitely. If the issue is resolved between the refresh and expiry times then the app still performs as expected.&lt;/li&gt;
+&lt;li&gt;The iOS app has &lt;em&gt;zero&lt;/em&gt; tolerance for intermittent networking or client-server communication, if the issue persists beyond the expiry then it will continue to broadcast an expired TempID indefinitely.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This appears to be in breach of the &lt;a href="https://www.health.gov.au/using-our-websites/privacy/privacy-policy-for-covidsafe-app#when-you-use-covidsafe"&gt;Privacy Policy for COVIDSafe App&lt;/a&gt;, which clearly states that:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An encrypted user ID will be created every 2 hours. This will be logged in the National COVIDSafe data store (&lt;strong&gt;data store&lt;/strong&gt;), operated by the Digital Transformation Agency, in case you need to be identified for contact tracing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Quite clearly, from the above behaviours, an encrypted user ID may not necessarily be created every 2 hours, such as users on iPods or iPads away from their home Wi-Fi, users with Airplane Mode in cinemas, users in shopping centers or other building that have weak cellular signals due to thick walls or underground levels, server outages, connections pending captive portals, etc.&lt;/p&gt;
+&lt;p&gt;This also appears to run somewhat contrary to the &lt;a href="https://www.health.gov.au/resources/publications/covidsafe-application-privacy-impact-assessment"&gt;Privacy Impact Assessment&lt;/a&gt;, which states:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;8.17 We understand that the National COVIDSafe Data Store will automatically generate new Unique IDs for each User every two hours and send these new Unique IDs to the User’s App.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;8.18 The App will only accept the new Unique IDs if it is open and running. If the App successfully accepts the new Unique ID, an automatic message will be generated and sent back to the National COVIDSafe Data Store. This message will only effectively indicate a “yes (new Unique ID successfully delivered)” response to the National COVIDSafe Data Store. If the App is not open and running, it will not be able to accept a new Unique ID. It will continue to store the previous Unique ID and use this when the App is opened, until a new Unique ID is generated and accepted.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="impact"&gt;Impact&lt;/h1&gt;
+&lt;p&gt;As has been interpreted from the code and has also been observed from performing functional testing on a running app:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;There are a range of actual and potential scenarios in which the app is open and running, but is still not able to accept a new Unique ID.&lt;/li&gt;
+&lt;li&gt;The iOS app does not even make a best-effort attempt to obtain new Unique IDs before the old one has expired.&lt;/li&gt;
+&lt;li&gt;Both the iOS and Android apps can (and do) broadcast expired TempIDs.&lt;/li&gt;
+&lt;li&gt;In these scenarios, users broadcasting TempIDs longer than their expiry become quite easy to track with third-party tools, which may amount to a breach of privacy.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="recommendations"&gt;Recommendations&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Prevent the broadcast of expired TempIDs,&lt;/li&gt;
+&lt;li&gt;Display a warning to the user to connect to the internet if the TempID has expired and the app is unable to obtain a fresh one,&lt;/li&gt;
+&lt;li&gt;Restore the original Singapore (OpenTrace) behaviour of downloading a large batch of TempIDs and cycling through them, instead of downloading them one at a time, and&lt;/li&gt;
+&lt;li&gt;On iOS, make use of the window between the TempID refresh time and its expiry time to obtain a new TempID.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;17th May 2020: Reported to support&amp;#64;covidsafe.gov.au&lt;/li&gt;
+&lt;li&gt;18th May 2020: Response confirming receipt and that this has been passed on to the development team.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		<summary>&lt;p&gt;There are two issues in the mobile COVIDSafe apps that allow for Unique IDs / TempIDs to be broadcast after they expire.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
 		<id>https://covidsafe.watch/issue-register/transparency</id>
