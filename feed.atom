@@ -4,901 +4,28 @@
 	<title />
 	<link rel="self" href="https://covidsafe.watch/" />
 	<rights>2020</rights>
-	<updated>2020-05-22T04:11:58Z</updated>
+	<updated>2020-05-22T04:20:44Z</updated>
 	<entry>
-		<id>https://covidsafe.watch/issue-register/you-have-covid-text-caused-public-panic</id>
-		<title>You have COVID text caused public panic</title>
-		<link href="https://covidsafe.watch/issue-register/you-have-covid-text-caused-public-panic" />
+		<id>https://covidsafe.watch/issue-register/accessibility</id>
+		<title>Accessibility</title>
+		<link href="https://covidsafe.watch/issue-register/accessibility" />
 		<updated />
-		<content>&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;2020/04/26: Identified that the text in the application could potentially cause public panic:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;When a user taps the “upload my data” button the next screen asserts “You have tested positive for COVID-19” which may be a false assertion and cause confusion. This text needs changing. Since the user is only supposed to upload data when asked to by a health official (see the previous screen), this statement should reiterate that data should not be uploaded UNLESS you have tested positive. It’s possible that uploading data without having tested positive will result in unnecessary and false notifications being sent to other users&lt;/p&gt;
+		<content>&lt;blockquote&gt;
+&lt;p&gt;Vision and hearing-impaired people are also at a disadvantage in using the app. Testing by disability groups has found that it is not fully screen reader accessible, and there is no known Auslan guide on access and use. There is an urgent need for immediate consultation with this community to enable accessibility features to be built into the app design and inform any future iterations&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;From: &lt;a href="https://docs.google.com/document/d/17GuApb1fG3Bn0_DVgDQgrtnd_QO3foBl7NVb8vaWeKc/edit"&gt;https://docs.google.com/document/d/17GuApb1fG3Bn0_DVgDQgrtnd_QO3foBl7NVb8vaWeKc/edit&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;2020/04/28: Mother-of-two Holly Donovan from Frankston panicked when she thought the app had diagnosed her with coronavirus.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;?# Twitter 1255671317145108482 /?&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Confusion and privacy concerns have grown over the federal government's COVIDSafe app, with one Melbourne woman saying a puzzling message led her to believe she had contracted the virus.&lt;/p&gt;
-&lt;p&gt;Mother-of-two Holly Donovan from Frankston panicked when she thought the app had diagnosed her with coronavirus.&lt;/p&gt;
-&lt;p&gt;The message &amp;quot;You have tested positive for COVID-19&amp;quot; appeared when she tapped the button &amp;quot;has a heath official asked you to upload your data?&amp;quot;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;From: &lt;a href="https://www.9news.com.au/national/covidsafe-app-melbourne-woman-feared-coronavirus-after-confusing-message/e9146501-6bbd-4509-b89a-406b2b98ed2a"&gt;https://www.9news.com.au/national/covidsafe-app-melbourne-woman-feared-coronavirus-after-confusing-message/e9146501-6bbd-4509-b89a-406b2b98ed2a&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;2020/05/04: V1.0.15 released which removed the text. Time to resolution 10 days.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;?# Twitter 1258014478978842625 /?&gt;
+&lt;p&gt;&lt;a href="https://www.afdo.org.au/covidsafe-app-community-sector-letter/"&gt;https://www.afdo.org.au/covidsafe-app-community-sector-letter/&lt;/a&gt;&lt;/p&gt;
+&lt;?# Twitter 1256939183853064192 /?&gt;
 </content>
-		<summary>&lt;p&gt;When a user taps the “upload my data” button the next screen asserts “You have tested positive for COVID-19” which may be a false assertion and cause confusion. This text needs changing. Since the user is only supposed to upload data when asked to by a health official (see the previous screen), this statement should reiterate that data should not be uploaded UNLESS you have tested positive. It’s possible that uploading data without having tested positive will result in unnecessary and false notifications being sent to other users&lt;/p&gt;</summary>
+		<summary>&lt;p&gt;Vision and hearing-impaired people are also at a disadvantage in using the app. Testing by disability groups has found that it is not fully screen reader accessible, and there is no known Auslan guide on access and use. There is an urgent need for immediate consultation with this community to enable accessibility features to be built into the app design and inform any future iterations&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://covidsafe.watch/issue-register/use-of-expired-tempids</id>
-		<title>Unique IDs are broadcast long after they expire</title>
-		<link href="https://covidsafe.watch/issue-register/use-of-expired-tempids" />
+		<id>https://covidsafe.watch/issue-register/battery-usage</id>
+		<title>Battery Usage</title>
+		<link href="https://covidsafe.watch/issue-register/battery-usage" />
 		<updated />
-		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
-&lt;p&gt;There are two issues in the mobile COVIDSafe apps that allow for Unique IDs / TempIDs to be broadcast after they expire.&lt;/p&gt;
-&lt;p&gt;The first issue relates to how the iOS app obtains new TempIDs.&lt;/p&gt;
-&lt;p&gt;The second issue identifies the parts of the codebase where the apps continue to use TempIDs that it already knows have expired.&lt;/p&gt;
-&lt;p&gt;The use of TempIDs beyond their 2-hour lifespan may make it easier for third-parties to track COVIDSafe app users.&lt;/p&gt;
-&lt;h1 id="obtaining-new-tempids-on-ios"&gt;Obtaining new TempIDs on iOS&lt;/h1&gt;
-&lt;p&gt;When requesting a TempID from the National COVIDSafe Data Store, the response contains three fields:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;The TempID itself.&lt;/li&gt;
-&lt;li&gt;A refresh time, which is 1 hour from the current time, after which the application should attempt to obtain a new TempID.&lt;/li&gt;
-&lt;li&gt;An expiry time, which is 2 hours from the current time, after which the application must cease to use this TempID.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;This interpretation of these fields is supported by the Android codebase, which includes the comment &lt;code&gt;// Only attempt to write BM back to peripheral if it is still valid&lt;/code&gt; in &lt;a href="https://github.com/AU-COVIDSafe/mobile-android/blob/b827cf3ccef72a3d38c6fc37466a99868823540f/app/src/main/java/au/gov/health/covidsafe/streetpass/StreetPassWorker.kt#L586"&gt;StreetPassWorker.kt#L586&lt;/a&gt;, as well as the various logging messages in both the iOS and Android codebase.&lt;/p&gt;
-&lt;p&gt;In the Android app, the app appears to set up a timer to obtain a new TempID after the refresh time is reached. However, the iOS app does not do this, and only attempts to obtain a new TempID once the &lt;em&gt;expiry&lt;/em&gt; time is reached.&lt;/p&gt;
-&lt;p&gt;This means that if there are any intermittent communications issues, such as a loss of network connectivity or server outage, the Android app has a whole hour as a grace window to attempt to re-establish communications and obtain a new TempID. However, the iOS app has no such grace window, and immediately has only two choices - broadcast an expired TempID, or broadcast nothing.&lt;/p&gt;
-&lt;h1 id="using-expired-tempids"&gt;Using Expired TempIDs&lt;/h1&gt;
-&lt;p&gt;In both these codebases, the app will continue to broadcast an expired TempID after it has expired, if a new one cannot be obtained.&lt;/p&gt;
-&lt;p&gt;In the Android codebase, this is due to the function &lt;code&gt;bmValid&lt;/code&gt;, which is supposed to check the validity of a Broadcast Message (BM), i.e. a TempID, always returning true in &lt;a href="https://github.com/AU-COVIDSafe/mobile-android/blob/696e4ed498623a763b3fefc6982d2567691ea48d/app/src/main/java/au/gov/health/covidsafe/Utils.kt#L245"&gt;Utils.kt#L245&lt;/a&gt;, &lt;em&gt;even if it has determined just two lines above that the TempID has indeed already expired.&lt;/em&gt; Therefore, if the app determines that the TempID has expired, it will nevertheless continue to re-use the old TempID indefinitely.&lt;/p&gt;
-&lt;p&gt;In the iOS codebase, this is due to the function &lt;code&gt;fetchTempIdFromApi&lt;/code&gt; returning the previously-acquired TempID if any error is encountered talking to the National COVIDSafe Data Store. This behaviour is defined in &lt;a href="https://github.com/AU-COVIDSafe/mobile-ios/blob/3640e52eb2c29b55a8daab304c214750c389d1b2/CovidSafe/EncounterMessageManager.swift#L97-L107"&gt;EncounterMessageManager.swift#L97-107&lt;/a&gt;. This function is called by &lt;code&gt;getAdvertisementPayload&lt;/code&gt; when the TempID has expired, and can therefore return a &amp;quot;new&amp;quot; token whose expiry is never re-evaluated. Therefore, if the app determines that the TempID has expired, and fails to obtain a new TempID, it will nevertheless continue to re-use the old TempID indefinitely.&lt;/p&gt;
-&lt;h1 id="relevance-to-privacy-policy"&gt;Relevance to Privacy Policy&lt;/h1&gt;
-&lt;p&gt;Combining these two issues means that:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The Android app has only an hour tolerance for intermittent networking or client-server communication, and if the issue persists beyond the expiry then it will continue to broadcast an expired TempID indefinitely. If the issue is resolved between the refresh and expiry times then the app still performs as expected.&lt;/li&gt;
-&lt;li&gt;The iOS app has &lt;em&gt;zero&lt;/em&gt; tolerance for intermittent networking or client-server communication, if the issue persists beyond the expiry then it will continue to broadcast an expired TempID indefinitely.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This appears to be in breach of the &lt;a href="https://www.health.gov.au/using-our-websites/privacy/privacy-policy-for-covidsafe-app#when-you-use-covidsafe"&gt;Privacy Policy for COVIDSafe App&lt;/a&gt;, which clearly states that:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An encrypted user ID will be created every 2 hours. This will be logged in the National COVIDSafe data store (&lt;strong&gt;data store&lt;/strong&gt;), operated by the Digital Transformation Agency, in case you need to be identified for contact tracing.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Quite clearly, from the above behaviours, an encrypted user ID may not necessarily be created every 2 hours, such as users on iPods or iPads away from their home Wi-Fi, users with Airplane Mode in cinemas, users in shopping centers or other building that have weak cellular signals due to thick walls or underground levels, server outages, connections pending captive portals, etc.&lt;/p&gt;
-&lt;p&gt;This also appears to run somewhat contrary to the &lt;a href="https://www.health.gov.au/resources/publications/covidsafe-application-privacy-impact-assessment"&gt;Privacy Impact Assessment&lt;/a&gt;, which states:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;8.17 We understand that the National COVIDSafe Data Store will automatically generate new Unique IDs for each User every two hours and send these new Unique IDs to the User’s App.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;8.18 The App will only accept the new Unique IDs if it is open and running. If the App successfully accepts the new Unique ID, an automatic message will be generated and sent back to the National COVIDSafe Data Store. This message will only effectively indicate a “yes (new Unique ID successfully delivered)” response to the National COVIDSafe Data Store. If the App is not open and running, it will not be able to accept a new Unique ID. It will continue to store the previous Unique ID and use this when the App is opened, until a new Unique ID is generated and accepted.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id="impact"&gt;Impact&lt;/h1&gt;
-&lt;p&gt;As has been interpreted from the code and has also been observed from performing functional testing on a running app:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;There are a range of actual and potential scenarios in which the app is open and running, but is still not able to accept a new Unique ID.&lt;/li&gt;
-&lt;li&gt;The iOS app does not even make a best-effort attempt to obtain new Unique IDs before the old one has expired.&lt;/li&gt;
-&lt;li&gt;Both the iOS and Android apps can (and do) broadcast expired TempIDs.&lt;/li&gt;
-&lt;li&gt;In these scenarios, users broadcasting TempIDs longer than their expiry become quite easy to track with third-party tools, which may amount to a breach of privacy.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id="recommendations"&gt;Recommendations&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;Prevent the broadcast of expired TempIDs,&lt;/li&gt;
-&lt;li&gt;Display a warning to the user to connect to the internet if the TempID has expired and the app is unable to obtain a fresh one,&lt;/li&gt;
-&lt;li&gt;Restore the original Singapore (OpenTrace) behaviour of downloading a large batch of TempIDs and cycling through them, instead of downloading them one at a time, and&lt;/li&gt;
-&lt;li&gt;On iOS, make use of the window between the TempID refresh time and its expiry time to obtain a new TempID.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;17th May 2020: Reported to support&amp;#64;covidsafe.gov.au&lt;/li&gt;
-&lt;li&gt;18th May 2020: Response confirming receipt and that this has been passed on to the development team.&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-		<summary>&lt;p&gt;There are two issues in the mobile COVIDSafe apps that allow for Unique IDs / TempIDs to be broadcast after they expire.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/transparency</id>
-		<title>Transparency</title>
-		<link href="https://covidsafe.watch/issue-register/transparency" />
-		<updated />
-		<content>&lt;?# Twitter 1258745850647293953 /?&gt;
-&lt;?# Twitter 1259076147276443649 /?&gt;
-&lt;?# Twitter 1260734086097670144 /?&gt;
-&lt;?# Twitter 1258306041579634688 /?&gt;
-&lt;?# Twitter 1261251106547494912 /?&gt;
-&lt;?# Raw ?&gt;
-&lt;?# Include "https://github.com/foo/bar/me.md" &gt;
-&lt;?#/ Raw ?&gt;  
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/social-pressure-and-coersion</id>
-		<title>Social Pressure &amp; Coersion</title>
-		<link href="https://covidsafe.watch/issue-register/social-pressure-and-coersion" />
-		<updated />
-		<content>&lt;h1 id="government"&gt;Government&lt;/h1&gt;
-&lt;?# Twitter 1256403073674739712 /?&gt;
-&lt;?# Twitter 1260724611756331008 /?&gt;
-&lt;?# Twitter 1260724884738437120 /?&gt;
-&lt;?# Twitter 1261109562498637824 /?&gt;
-&lt;h1 id="companies"&gt;Companies&lt;/h1&gt;
-&lt;?# Twitter 1259725400952864768 /?&gt;
-&lt;?# Twitter 1259695834809036800 /?&gt;
-&lt;?# Twitter 1257518972972367872 /?&gt;
-&lt;?# Twitter 1258322382034366465 /?&gt;
-&lt;?# Twitter 1258670284007063552 /?&gt;
-&lt;?# Twitter 1261161464183664641 /?&gt;
-&lt;?# Twitter 1261189641396318213 /?&gt;
-&lt;?# Twitter 1261405509795495938 /?&gt;
-&lt;?# Twitter 1261555319802560512 /?&gt;
-&lt;?# Twitter 1261821386328178688 /?&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/rural-and-remote-australians-on-telstra-cannot-register</id>
-		<title>Rural And Remote Australians On Telstra Cannot Register</title>
-		<link href="https://covidsafe.watch/issue-register/rural-and-remote-australians-on-telstra-cannot-register" />
-		<updated />
-		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
-&lt;?# Twitter 1254499854245433344 /?&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Many rural Australians aren't able to register for the app at all.&lt;/p&gt;
-&lt;p&gt;In order to register for COVIDSafe, users need to be sent an SMS verification. This two-factor authentication (2FA) is for security purposes and in general is a good feature of the app.&lt;/p&gt;
-&lt;p&gt;But this becomes problematic if you live in an area with patchy or no mobile service. And this is the issue that many rural Australians are now facing. If you can't get the SMS, you can't use COVIDSafe.&lt;/p&gt;
-&lt;p&gt;For rural Aussies – or even just those who live in a mobile black spot – who are on plans with Vodafone and Optus, excluding prepaid, this isn't a problem. With these providers, they're able to still receive the verification text because these telcos offer SMS Over WiFi.&lt;/p&gt;
-&lt;p&gt;Unfortunately, users who are with Telstra or some Mobile virtual Network Operator (MVNO) resellers don't have the SMS over WiFi option.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://www.gizmodo.com.au/2020/05/telstra-sms-over-wifi-launch/"&gt;https://www.gizmodo.com.au/2020/05/telstra-sms-over-wifi-launch/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id="resolution"&gt;Resolution&lt;/h1&gt;
-&lt;?# Twitter 1257902961780387840 /?&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;quot;Telstra customers in areas that do not have mobile coverage are unable to send or receive SMS over WiFi. We have been working to introduce this capability into the network and will now accelerate the work required. We are also working closely with the DTA on alternative methods for the COVIDSafe app to send an authentication code,&amp;quot; a Telstra spokesperson said in an email to Gizmodo Australia.&lt;/p&gt;
-&lt;p&gt;&amp;quot;The government is aware that Telstra handsets presently do not support SMS over wi-fi, meaning that those in areas with poor mobile coverage may experience challenges in completing the process to download and register the COVIDSafe App (as the process involves receiving a code via SMS),&amp;quot;a spokesperson for the Minister for Communications, Cyber Safety and the Arts, Paul Fletcher, said in an email to Gizmodo Australia.&lt;/p&gt;
-&lt;p&gt;While Telstra's statement indicated that it was working on introducing SMS Over Wifi, no time frame was given. Telstra has now confirmed with Gizmodo Australia that the feature has begun rolling out on iOS and Samsung devices as of today.&lt;/p&gt;
-&lt;p&gt;&amp;quot;SMS over WiFi updates for customers’ smartphones have gone live overnight and will roll out progressively over the next seven days. Some Telstra customers will already see the functionality available on their devices.&amp;quot; said a Telstra spokesperson in an email tp Gizmodo Australia.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://www.gizmodo.com.au/2020/04/some-rural-australians-cant-access-covidsafe-app-due-to-a-missing-telstra-feature/"&gt;https://www.gizmodo.com.au/2020/04/some-rural-australians-cant-access-covidsafe-app-due-to-a-missing-telstra-feature/&lt;/a&gt;&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;Many rural Australians aren't able to register for the app at all.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/roadmap</id>
-		<title>What is the roadmap?</title>
-		<link href="https://covidsafe.watch/issue-register/roadmap" />
-		<updated />
-		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
-&lt;p&gt;There has been no roadmap published by the DTA. We sometimes hear through the media that an update may be coming, but we don't know what that update will contain until it is published, and then it is just the brief release notes on the app stores or we compare the decompiled app with the previous version. The only certain item that has been mentioned several times is that they are planning to integrate the Exposure Notification APIs developed by Apple and Google. But there has been no mention or discussion by the DTA on what this integration may involve.&lt;/p&gt;
-&lt;h2 id="original-twitter-thread"&gt;Original Twitter thread&lt;/h2&gt;
-&lt;?# Twitter 1258446501488889856 /?&gt;
-&lt;h2 id="senate-committee-transcript"&gt;Senate Committee transcript&lt;/h2&gt;
-&lt;p&gt;See Mr. Brugeaud's comments at the top of page 3 about being early adopters of the forthcoming Apple and Google APIs.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://parlinfo.aph.gov.au/parlInfo/download/committees/commsen/21693643-a9ab-41e2-8440-77267c6c7b37/toc_pdf/Senate%20Select%20Committee%20on%20COVID-19_2020_05_06_7691.pdf;fileType=application%2Fpdf#search=%22committees/commsen/21693643-a9ab-41e2-8440-77267c6c7b37/0000%22"&gt;https://parlinfo.aph.gov.au/parlInfo/download/committees/commsen/21693643-a9ab-41e2-8440-77267c6c7b37/toc_pdf/Senate%20Select%20Committee%20on%20COVID-19_2020_05_06_7691.pdf;fileType=application%2Fpdf#search=%22committees/commsen/21693643-a9ab-41e2-8440-77267c6c7b37/0000%22&lt;/a&gt;&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;There has been no roadmap published by the DTA. We sometimes hear through the media that an update may be coming, but we don't know what that update will contain until it is published, and then it is just the brief release notes on the app stores or we compare the decompiled app with the previous version. The only certain item that has been mentioned several times is that they are planning to integrate the Exposure Notification APIs developed by Apple and Google. But there has been no mention or discussion by the DTA on what this integration may involve.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/questionable-metrics-of-success</id>
-		<title>Questionable Metrics of Success</title>
-		<link href="https://covidsafe.watch/issue-register/questionable-metrics-of-success" />
-		<updated />
-		<content>&lt;?# Twitter 1261115581769498625 /?&gt;
-&lt;?# Twitter 1261444399705157632 /?&gt;
-&lt;?# Twitter 1261481135931928577 /?&gt;
-&lt;?# Twitter 1261549852556619777 /?&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/potential-data-breach-handled-incorrectly</id>
-		<title>Potential Databreach Handled Incorrectly</title>
-		<link href="https://covidsafe.watch/issue-register/potential-data-breach-handled-incorrectly" />
-		<updated />
-		<content>&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;2020/05/09: Discussion about a S3 bucket starts circulating in the community about an Amazon S3 bucket that files named &amp;quot;CovidSafeUserData&amp;quot;. Reported to ASD.Assist&amp;#64;defense.gov.au, support&amp;#64;covidsafe.gov.au.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;?# Twitter 1259103414316707840 /?&gt;
-&lt;?# Twitter 1259105952030027776 /?&gt;
-&lt;?# Twitter 1259111494072975363 /?&gt;
-&lt;ul&gt;
-&lt;li&gt;2020/05/12: support&amp;#64;covidsafe.gov.au (the &lt;a href="https://covidsafe.gov.au/.well-known/security.txt"&gt;designated security contact address&lt;/a&gt;) responded to the matter incorrectly and directed Geoff where he could download the source code of the application.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;?# Twitter 1260012514131099648 /?&gt;
-&lt;h1 id="recommended-next-steps"&gt;Recommended Next Steps&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Seperate customer support and security reporting channels. Establish a proper bug bounty.&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/out-of-app-recordkeeping</id>
-		<title>Out of App Record Keeping.</title>
-		<link href="https://covidsafe.watch/issue-register/out-of-app-recordkeeping" />
-		<updated />
-		<content>&lt;p&gt;Issues relating to how the Australian Government Federal, State and Local are endorsing / compelling citizens to record information outside the COVIDSafe application.&lt;/p&gt;
-&lt;p&gt;Biosecurity Act received amendments which provide legal constraints of how information is stored during COVID and specifically its disposal.  There is no such legislation in place to cover the same conditions of collection and disposal outside the COVIDSafe Application context.&lt;/p&gt;
-&lt;h3 id="th-may-2020"&gt;15th May 2020&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;?# Twitter 1261109562498637824 /?&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Queensland &lt;em&gt;&lt;strong&gt;relaxes&lt;/strong&gt;&lt;/em&gt; lockdown constraints to enable Restaurants, Cafes, Pubs, Clubs, RSL clubs and Hotels to open doors for up to maximum 10 customers per venue. A detailed checklist provided to ensure any of the business mentioned above types must abide by before opening for trade (&lt;a href="https://www.covid19.qld.gov.au/__data/assets/pdf_file/0020/127235/COVID-Safe-Checklist-RestCafes.pdf"&gt;https://www.covid19.qld.gov.au/__data/assets/pdf_file/0020/127235/COVID-Safe-Checklist-RestCafes.pdf&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Queensland business required to keep records of customers before trade commences, specifically they are required to ask customers for their &lt;strong&gt;name, address and mobile phone number&lt;/strong&gt; of a &lt;em&gt;person&lt;/em&gt; at each table.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;No current legislation beyond Privacy Act 1988 provides any legal coverage as to what business is required to do with the information gathered during the COVID outbreak, specifically with regards to the checklist.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Businesses are less likely to provide visible terms and conditions of privacy before patrons entering the above business types, mainly, they are less likely to demonstrate to patrons how their information is likely to be used once requested.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Queensland's checklist has no relationship to COVIDSafe application, moreover should a patron have the application installed they are still required to give the same information again, despite such information existing inside the applications registration process (effectively reducing the value proposition of the COVIDSafe application).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;COVIDSafe application has had an amendment (&lt;a href="https://www.legislation.gov.au/Details/F2020L00480"&gt;https://www.legislation.gov.au/Details/F2020L00480&lt;/a&gt;) to the Biosecurity Act to provide specific coverage for how privacy and use of such data are to be used however it is also worth noting that such coverage limited to the application only. Out of Application record-keeping (using the same information as the COVIDSafe app) has no such coverage or legal constraints, effectively ensuring duplication of data lives under two sets of legal constraints.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Queensland Checklist provides no legal recourse should a business choose to use the records outside the COVID period, mainly if a business were to use such information for marketing, statistical or other reasons.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;No verification or validation of a customer's records are in place; specifically if a customer were to provide fake information, there is no explicit legal action that could be taken against the said customer(s).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;New Zealand has used a similar process by way of asking businesses to record customer information. Recently, a Subway worker found to have abused the records of a female customer by using such records to stalk her (&lt;a href="https://nakedsecurity.sophos.com/2020/05/14/woman-stalked-by-sandwich-server-via-her-covid-19-contact-tracing-info/"&gt;https://nakedsecurity.sophos.com/2020/05/14/woman-stalked-by-sandwich-server-via-her-covid-19-contact-tracing-info/&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Unclear specifically if law enforcement may or may not compel a business to provide information retained by businesses.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Business are requested to store customers in a secure manner, but no specific governance or guidance is provided on what is considered reasonably secure - Hand written records stored on a notepad, excel spreadsheet of customer information on a open terminal etc.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Note: &lt;strong&gt;Queensland Attorney-General and Minister for Justice / Shadow Minister(s) have been notified formally for response to these set of issues.&lt;/strong&gt;&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;Issues relating to how the Australian Government Federal, State and Local are endorsing / compelling citizens to record information outside the COVIDSafe application.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/no-customer-support-until-successful-registration</id>
-		<title>No customer support until successful registration</title>
-		<link href="https://covidsafe.watch/issue-register/no-customer-support-until-successful-registration" />
-		<updated />
-		<content>&lt;?# Twitter 1257507534035800066 /?&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/no-customer-support-on-social-media</id>
-		<title>No customer support on social media</title>
-		<link href="https://covidsafe.watch/issue-register/no-customer-support-on-social-media" />
-		<updated />
-		<content>&lt;?# Twitter 1257513065727188992 /?&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/no-customer-support-in-the-app-stores</id>
-		<title>No customer support in the app stores</title>
-		<link href="https://covidsafe.watch/issue-register/no-customer-support-in-the-app-stores" />
-		<updated />
-		<content>&lt;?# Twitter 1257513065727188992 /?&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/lack-of-bug-bounty</id>
-		<title>Lack of Bug Bounty</title>
-		<link href="https://covidsafe.watch/issue-register/lack-of-bug-bounty" />
-		<updated />
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/just-a-paint-job</id>
-		<title>Just a paint job</title>
-		<link href="https://covidsafe.watch/issue-register/just-a-paint-job" />
-		<updated />
-		<content>&lt;?# Twitter 1256952268206665730 /?&gt;
-&lt;?# Twitter 1257600104183164929 /?&gt;
-&lt;?# Twitter 1257506430476640256 /?&gt;
-&lt;?# Twitter 1257506832140038145 /?&gt;
-&lt;?# Twitter 1257507532173541378 /?&gt;
-&lt;?# Twitter 1257524946361741317 /?&gt;
-&lt;?# Twitter 1257532378320265216 /?&gt;
-&lt;?# Twitter 1257537188540985349 /?&gt;
-&lt;?# Twitter 1257537587306090498 /?&gt;
-&lt;?# Twitter 1257540470613237765 /?&gt;
-&lt;?# Twitter 1257540474048581632 /?&gt;
-&lt;?# Twitter 1257541996874326018 /?&gt;
-&lt;?# Twitter 1257547477542027270 /?&gt;
-&lt;p&gt;&lt;a href="https://www.theregister.co.uk/2020/05/07/covidsafe_australia_contact_tracing_app_issues/"&gt;https://www.theregister.co.uk/2020/05/07/covidsafe_australia_contact_tracing_app_issues/&lt;/a&gt;&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;a href="https://www.theregister.co.uk/2020/05/07/covidsafe_australia_contact_tracing_app_issues/"&gt;https://www.theregister.co.uk/2020/05/07/covidsafe_australia_contact_tracing_app_issues/&lt;/a&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/iphones-not-working-in-the-background</id>
-		<title>iPhone's not working in the background</title>
-		<link href="https://covidsafe.watch/issue-register/iphones-not-working-in-the-background" />
-		<updated />
-		<content>&lt;h1 id="claim"&gt;Claim&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Australia’s forthcoming contact tracing app will be fundamentally different to Singapore’s TraceTogether, with improvements having already been made to the latter's functionality.&lt;/p&gt;
-&lt;p&gt;Acting health department secretary Caroline Edwards told a senate inquiry into COVID-19 on Thursday that although the app is derived from TraceTogether, its code base will be unique.&lt;/p&gt;
-&lt;p&gt;“I don’t think the Singapore TraceTogether app is the model,” she said in response to questions from Labor senator Murray Watt, adding that it has been an “important contributor”&lt;/p&gt;
-&lt;p&gt;But Australia’s app, which is being developed by the Digital Transformation Agency, is expected to build on TraceTogether elements, particularly around Bluetooth on iPhones.&lt;/p&gt;
-&lt;p&gt;Edwards said that the DTA app would not need to constantly run in the foreground for contacts to be recorded, although he admitted Bluetooth would work better with the app open.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;From: &lt;a href="https://www.itnews.com.au/news/australias-covid-tracing-app-better-than-singapores-health-chief-547126"&gt;https://www.itnews.com.au/news/australias-covid-tracing-app-better-than-singapores-health-chief-547126&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id="technical-analysis"&gt;Technical Analysis&lt;/h1&gt;
-&lt;h2 id="jim-mussared"&gt;Jim Mussared&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Jim Mussared is one Australian developer who's been working on uncovering the app's flaws to ensure it's doing what it's meant to. For him, it's made one thing particularly clear — the DTA hasn't been easy to work with when it comes to disclosing bugs.&lt;/p&gt;
-&lt;p&gt;&amp;quot;Seeing the source code allows us to do a direct comparison to the Singapore [TraceTogether] code,&amp;quot; Mussared said to Gizmodo Australia over email.&lt;/p&gt;
-&lt;p&gt;&amp;quot;One very clear result of this is that there were zero functional changes to the iOS BLE backgrounding behaviour (CentralController.swift). We know that the Singapore team knew that background-to-background iPhone didn't work, so any claims by the DTA that they 'fixed it' indicate that either they never actually tested [or] investigated it, or their testing methodology was flawed.&amp;quot;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;From: &lt;a href="https://www.gizmodo.com.au/2020/05/covidsafe-bug-reporting-problems/"&gt;https://www.gizmodo.com.au/2020/05/covidsafe-bug-reporting-problems/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="richard-nelson"&gt;Richard Nelson&lt;/h2&gt;
-&lt;p&gt;From: &lt;a href="https://docs.google.com/document/d/1sviVey1jCk97BACwkAJMctG8rFlC7Mf8pMpluW6VOQw/edit"&gt;https://docs.google.com/document/d/1sviVey1jCk97BACwkAJMctG8rFlC7Mf8pMpluW6VOQw/edit&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This document describes a bug as observed in the COVIDSafe iOS application, causing it to be much less effective than it could be, while the application is not in the foreground.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="repeated-scanning-for-peripherals-and-not-in-the-background"&gt;Repeated scanning for peripherals (and not in the background)&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The below reproducible output shows evidence of the iOS application continually initiating scans in the foreground, and never initiating in the background. A Frida script hooks the CBCentralManager scanForPeripheralsWithServices method, and displays the first argument (the app’s service UUID) when run. When the application is in foreground state, the scan is run every minute. Once the app goes into the background, we don’t observe any scans, and stopScan has been called meaning the bluetooth central manager will not send any more discovered peripherals in central mode. When it’s put in the foreground again, the scan runs again. Be sure to run this without other devices interfering. Timestamps are important, the app starts in the foreground. Important to note is that it’s not actually required in iOS to continue requesting a scan. This only needs to happen once, and iOS will call centralManager(_:didDiscover:advertisementData:rssi:) when a peripheral is discovered in future, with some limitations.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;2020-05-02 01:28:17.329+10:00
-[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
-    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
-)&amp;quot;]
-
-
-2020-05-02 01:29:17.329+10:00
-[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
-    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
-)&amp;quot;]
-
-
-2020-05-02 01:30:17.328+10:00
-[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
-    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
-)&amp;quot;]
-
-
-2020-05-02 01:31:17.351+10:00
-[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
-    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
-)&amp;quot;]
-
-
-2020-05-02 01:31:53.065+10:00
-Entered background
-
-
-2020-05-02 01:35:09.530+10:00
-[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
-    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
-)&amp;quot;]
-
-
-2020-05-02 01:35:09.532+10:00
-Entered foreground
-
-
-2020-05-02 01:35:17.349+10:00
-[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
-    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
-)&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="debug-breakpoints"&gt;Debug Breakpoints&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Further evidence can be seen by setting up a debugger on the COVIDSafe app. Using a disassembler, you can find the entry point of the delegate method:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;code&gt;centralManager(_:didDiscover:advertisementData:rssi:)&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This delegate method tells the delegate the central manager discovered a peripheral while scanning for devices. In the COVIDSafe binary, this method is at address 0x100055c14. To set a breakpoint, you first need to calculate the ASLR offset. You can do this by using lldb to show where the COVIDSafe image is based. Here’s a video that shows the breakpoint correctly hitting once the second iOS device runs the scan (when the app is opened). This doesn’t show it not occuring (the above script does), but that would have been a very long video, as the breakpoint never occurs. This follows from the above evidence that scan results are not sent to the application.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="the-bug"&gt;The Bug&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The COVIDSafe application code is derived from Opentrace. In the OpenTrace source code, it sets up a timer to run here:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/opentrace-community/opentrace-ios/blob/75fc506bef34ba48a727f9758f94823b9b4a2286/OpenTrace/Bluetrace/CentralController.swift#L86"&gt;https://github.com/opentrace-community/opentrace-ios/blob/75fc506bef34ba48a727f9758f94823b9b4a2286/OpenTrace/Bluetrace/CentralController.swift#L86&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The main problem here is that it is continuously starting and stopping scans, using a timer. When the application is put into the background, the timer started on the main thread’s execution is paused, and scans do not run. When the application enters the foreground again, it runs immediately because the timer suddenly expires. It then may run again shortly after (as seen in the script output above).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Calling stopScan ensures that peripherals discovered on future system scan results are not reported to the app.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Based on the evidence of the behaviour above, we can readily believe that this bug (or a variant of) has been copied to the Australian COVIDSafe application.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="the-fix"&gt;The Fix&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;I believe the application only needs to call scanForPeripherals once. I have an example project which continues to get peripheral discovery callbacks when it is in the background. The key to this, apart from not continuously starting and stopping scans is to set CBCentralManagerScanOptionAllowDuplicatesKey to true, allowing multiple discoveries of the same peripheral. The behaviour of this changes in the background, but on system scans devices continue to be reported to the app (multiple times). Example output from the application is at the bottom of this document.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="frida-trace-with-no-other-devices"&gt;Frida Trace with no other devices&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Frida-trace output of the COVIDSafe app showing timings, application going from foreground to background, stopScan being called, and then scan resuming in foreground. No other devices with the COVIDSafe app in the foreground were present.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;           /* TID 0x2f0b */
-  4256 ms  -[CBCentralManager stopScan]
-  4256 ms     | -[CBCentralManager setIsScanning:0x0]
-           /* TID 0x407 */
- 53301 ms  -[CBCentralManager cancelPeripheralConnection:0x2806f9360]
- 53301 ms     | -[CBCentralManager cancelPeripheralConnection:0x2806f9360 options:0x2831fab20]
- 53302 ms  -[NSKVONotifying_CBCentralManager dealloc]
- 53302 ms  -[CBCentralManager scanForPeripheralsWithServices:0x2839b6f40 options:0x0]
- 53302 ms     | -[CBCentralManager setIsScanning:0x1]
-           /* TID 0x3927 */
- 53442 ms  -[CBCentralManager handleMsg:0x3c args:0x280ef5a40]
- 53443 ms     | -[CBCentralManager handlePeripheralDiscovered:0x280ef5a40]
- 53443 ms     |    | -[CBCentralManager peripheralWithInfo:0x280ef5a40]
- 53443 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x2835fcdb0]
- 53443 ms     |    | -[CBCentralManager delegate]
- 53444 ms     |    | -[NSKVONotifying_CBCentralManager class]
- 53444 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x281cfdff0]
- 53444 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
- 53445 ms     |    | -[CBCentralManager connectPeripheral:0x2806f9360 options:0x0]
-           /* TID 0x2f0b */
- 53936 ms  -[CBCentralManager handleMsg:0x3d args:0x2819ccd80]
- 53937 ms     | -[CBCentralManager handlePeripheralConnectionCompleted:0x2819ccd80]
- 53937 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x2831f8420]
- 53937 ms     |    | -[CBCentralManager delegate]
- 53937 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x281cfdff0]
- 53937 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
- 54022 ms  -[CBCentralManager handleMsg:0x3e args:0x2822b7500]
- 54022 ms     | -[CBCentralManager handlePeripheralCLReady:0x2822b7500]
- 54022 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x2831fa560]
- 54023 ms  -[CBCentralManager handleMsg:0x5e args:0x2822b5380]
- 54023 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831f8420]
-           /* TID 0x3927 */
- 54682 ms  -[CBCentralManager handleMsg:0x6b args:0x2822b6bc0]
- 54682 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831f81e0]
- 54742 ms  -[CBCentralManager handleMsg:0x73 args:0x2819ccd00]
- 54742 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831f8420]
-           /* TID 0x2f0b */
- 54836 ms  -[CBCentralManager handleMsg:0x79 args:0x2819d4880]
- 54836 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831fea00]
- 54837 ms     | -[NSKVONotifying_CBCentralManager class]
- 54837 ms     | -[NSKVONotifying_CBCentralManager class]
-           /* TID 0x3927 */
- 54922 ms  -[NSKVONotifying_CBCentralManager class]
- 54922 ms  -[NSKVONotifying_CBCentralManager class]
- 54922 ms  -[NSKVONotifying_CBCentralManager class]
-           /* TID 0x2f0b */
- 55011 ms  -[CBCentralManager handleMsg:0x7a args:0x2822b6dc0]
- 55011 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831f8420]
- 55012 ms     | -[NSKVONotifying_CBCentralManager class]
- 55012 ms     | -[CBCentralManager cancelPeripheralConnection:0x2806f9360]
- 55012 ms     |    | -[CBCentralManager cancelPeripheralConnection:0x2806f9360 options:0x2831fd9e0]
-           /* TID 0x3927 */
- 55014 ms  -[CBCentralManager handleMsg:0x3f args:0x2822b6980]
- 55014 ms     | -[CBCentralManager handlePeripheralDisconnectionCompleted:0x2822b6980]
- 55015 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x2831f81e0]
- 55015 ms     |    | -[CBCentralManager delegate]
- 55015 ms     |    | -[NSKVONotifying_CBCentralManager class]
- 55102 ms  -[NSKVONotifying_CBCentralManager class]
- 55102 ms  -[NSKVONotifying_CBCentralManager class]
- 55102 ms  -[NSKVONotifying_CBCentralManager class]
- 64255 ms  -[CBCentralManager stopScan]
- 64260 ms     | -[CBCentralManager setIsScanning:0x0]
-           /* TID 0x407 */
- 71969 ms  -[UIApplication _applicationDidEnterBackground]
-518229 ms  -[CBCentralManager cancelPeripheralConnection:0x2806f9360]
-518229 ms     | -[CBCentralManager cancelPeripheralConnection:0x2806f9360 options:0x2831fa780]
-518231 ms  -[NSKVONotifying_CBCentralManager dealloc]
-518231 ms  -[CBCentralManager scanForPeripheralsWithServices:0x2839b5650 options:0x0]
-518232 ms     | -[CBCentralManager setIsScanning:0x1]
-518233 ms  -[UIApplication _sendWillEnterForegroundCallbacks]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="frida-trace-with-other-device-scanning-while-in-background"&gt;Frida Trace with other device scanning while in background&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Frida-trace output showing scanning events when in background and COVIDSafe is opened on another iPhone:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;           /* TID 0xb13 */
-  6347 ms  -[CBCentralManager stopScan]
-  6348 ms     | -[CBCentralManager setIsScanning:0x0]
-           /* TID 0x407 */
- 55403 ms  -[CBCentralManager cancelPeripheralConnection:0x2828ac000]
- 55404 ms     | -[CBCentralManager cancelPeripheralConnection:0x2828ac000 options:0x281fb01c0]
- 55404 ms  -[NSKVONotifying_CBCentralManager dealloc]
- 55404 ms  -[CBCentralManager scanForPeripheralsWithServices:0x2817fc1b0 options:0x0]
- 55405 ms     | -[CBCentralManager setIsScanning:0x1]
-           /* TID 0x666b */
- 55460 ms  -[CBCentralManager handleMsg:0x3c args:0x28209c000]
- 55460 ms     | -[CBCentralManager handlePeripheralDiscovered:0x28209c000]
- 55460 ms     |    | -[CBCentralManager peripheralWithInfo:0x28209c000]
- 55460 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x281b98030]
- 55461 ms     |    | -[CBCentralManager delegate]
- 55462 ms     |    | -[NSKVONotifying_CBCentralManager class]
- 55462 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
- 55463 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
- 55463 ms     |    | -[CBCentralManager connectPeripheral:0x2828ac000 options:0x0]
-           /* TID 0xb13 */
- 56256 ms  -[CBCentralManager handleMsg:0x3d args:0x2837d4300]
- 56256 ms     | -[CBCentralManager handlePeripheralConnectionCompleted:0x2837d4300]
- 56257 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb0060]
- 56257 ms     |    | -[CBCentralManager delegate]
- 56257 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
- 56257 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
- 56343 ms  -[CBCentralManager handleMsg:0x3e args:0x280c08540]
- 56343 ms     | -[CBCentralManager handlePeripheralCLReady:0x280c08540]
- 56344 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb8200]
- 56344 ms  -[CBCentralManager handleMsg:0x5e args:0x280c08380]
- 56344 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8060]
-           /* TID 0x666b */
- 57003 ms  -[CBCentralManager handleMsg:0x6b args:0x280c084c0]
- 57003 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8180]
-           /* TID 0xb13 */
- 57063 ms  -[CBCentralManager handleMsg:0x73 args:0x2837e4100]
- 57064 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8200]
-           /* TID 0x666b */
- 57128 ms  -[CBCentralManager handleMsg:0x79 args:0x2837d4300]
- 57129 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb01e0]
- 57130 ms     | -[NSKVONotifying_CBCentralManager class]
- 57130 ms     | -[NSKVONotifying_CBCentralManager class]
-           /* TID 0xb13 */
- 57303 ms  -[CBCentralManager handleMsg:0x7a args:0x280c00100]
- 57303 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb0080]
- 57303 ms     | -[NSKVONotifying_CBCentralManager class]
- 57303 ms     | -[CBCentralManager cancelPeripheralConnection:0x2828ac000]
- 57304 ms     |    | -[CBCentralManager cancelPeripheralConnection:0x2828ac000 options:0x281fb0100]
-           /* TID 0x666b */
- 57305 ms  -[CBCentralManager handleMsg:0x3f args:0x280c00100]
- 57305 ms     | -[CBCentralManager handlePeripheralDisconnectionCompleted:0x280c00100]
- 57305 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb01e0]
- 57305 ms     |    | -[CBCentralManager delegate]
- 57305 ms     |    | -[NSKVONotifying_CBCentralManager class]
- 64532 ms  -[CBCentralManager handleMsg:0x3c args:0x2837d4280]
- 64532 ms     | -[CBCentralManager handlePeripheralDiscovered:0x2837d4280]
- 64532 ms     |    | -[CBCentralManager peripheralWithInfo:0x2837d4280]
- 64533 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x281b98020]
- 64533 ms     |    | -[CBCentralManager delegate]
- 64534 ms     |    | -[NSKVONotifying_CBCentralManager class]
- 64534 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
- 64534 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
- 64540 ms     |    | -[CBCentralManager connectPeripheral:0x282890000 options:0x0]
-           /* TID 0xb13 */
- 66347 ms  -[CBCentralManager stopScan]
- 66347 ms     | -[CBCentralManager setIsScanning:0x0]
-           /* TID 0x407 */
- 73904 ms  -[UIApplication _applicationDidEnterBackground]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;At this point, I opened COVIDSafe on another iPhone. Note we are still in the background:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;247596 ms  -[CBCentralManager cancelPeripheralConnection:0x2828ac000]
-247608 ms     | -[CBCentralManager cancelPeripheralConnection:0x2828ac000 options:0x281fb8100]
-           /* TID 0xb13 */
-247609 ms  -[NSKVONotifying_CBCentralManager class]
-247610 ms  -[NSKVONotifying_CBCentralManager class]
-247610 ms  -[NSKVONotifying_CBCentralManager class]
-           /* TID 0x407 */
-247610 ms  -[CBCentralManager cancelPeripheralConnection:0x282890000]
-247610 ms     | -[CBCentralManager cancelPeripheralConnection:0x282890000 options:0x281fb89c0]
-247611 ms  -[NSKVONotifying_CBCentralManager dealloc]
-247611 ms  -[NSKVONotifying_CBCentralManager dealloc]
-247611 ms     | -[CBCentralManager cancelPeripheralConnection:0x282890000]
-247611 ms     |    | -[CBCentralManager cancelPeripheralConnection:0x282890000 options:0x281fb80e0]
-247611 ms  -[CBCentralManager scanForPeripheralsWithServices:0x281704510 options:0x0]
-247611 ms     | -[CBCentralManager setIsScanning:0x1]
-           /* TID 0x666b */
-247619 ms  -[CBCentralManager handleMsg:0x3f args:0x280c09040]
-247619 ms     | -[CBCentralManager handlePeripheralDisconnectionCompleted:0x280c09040]
-247619 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb8220]
-           /* TID 0x6e1f */
-247708 ms  -[CBCentralManager handleMsg:0x3c args:0x28209c0e0]
-247708 ms     | -[CBCentralManager handlePeripheralDiscovered:0x28209c0e0]
-247708 ms     |    | -[CBCentralManager peripheralWithInfo:0x28209c0e0]
-247708 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x281b982f0]
-247708 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x281b982e0]
-247709 ms     |    | -[CBCentralManager delegate]
-247710 ms     |    | -[NSKVONotifying_CBCentralManager class]
-247710 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
-247710 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
-247710 ms     |    | -[CBCentralManager connectPeripheral:0x2828ac000 options:0x0]
-247712 ms  -[CBCentralManager handleMsg:0x3d args:0x2837d4380]
-247713 ms     | -[CBCentralManager handlePeripheralConnectionCompleted:0x2837d4380]
-247713 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb0120]
-247713 ms     |    | -[CBCentralManager delegate]
-247713 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
-247713 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
-247721 ms  -[CBCentralManager handleMsg:0x6b args:0x280c08f80]
-247721 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8180]
-247771 ms  -[CBCentralManager handleMsg:0x73 args:0x2837e4800]
-247771 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb80c0]
-247801 ms  -[NSKVONotifying_CBCentralManager class]
-247801 ms  -[NSKVONotifying_CBCentralManager class]
-247801 ms  -[NSKVONotifying_CBCentralManager class]
-247836 ms  -[CBCentralManager handleMsg:0x79 args:0x2837d4380]
-247836 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb05a0]
-247837 ms     | -[NSKVONotifying_CBCentralManager class]
-247837 ms     | -[NSKVONotifying_CBCentralManager class]
-248010 ms  -[CBCentralManager handleMsg:0x7a args:0x280c08380]
-248011 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8100]
-248011 ms     | -[NSKVONotifying_CBCentralManager class]
-248011 ms     | -[CBCentralManager cancelPeripheralConnection:0x2828ac000]
-248012 ms     |    | -[CBCentralManager cancelPeripheralConnection:0x2828ac000 options:0x281fb80a0]
-248013 ms  -[CBCentralManager handleMsg:0x3f args:0x280c01480]
-248013 ms     | -[CBCentralManager handlePeripheralDisconnectionCompleted:0x280c01480]
-248013 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb0940]
-248013 ms     |    | -[CBCentralManager delegate]
-248013 ms     |    | -[NSKVONotifying_CBCentralManager class]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Application comes into foreground here, approx 2 mins later.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;           /* TID 0x407 */
-269145 ms  -[UIApplication _sendWillEnterForegroundCallbacks]
-           /* TID 0x666b */
-269149 ms  -[CBCentralManager stopScan]
-269149 ms     | -[CBCentralManager setIsScanning:0x0]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Output from the example application. Note the continuous discovery after being put into the background.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;2020-05-02 20:08:39 +0000: Entering foreground...
-Powered on
-2020-05-02 20:08:39 +0000: Starting scan
-Peripheral advertising..
-2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -75
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:41 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -96
-2020-05-02 20:08:41 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -96
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
-2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
-2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -77
-2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -77
-2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
-2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -69
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -69
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -75
-2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:44 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -96
-2020-05-02 20:08:44 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -95
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -73
-2020-05-02 20:08:44 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:08:44 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -81
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -79
-2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -79
-2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
-2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:45 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -73
-2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:45 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
-2020-05-02 20:08:45 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
-2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
-2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
-2020-05-02 20:08:45 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
-2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -88
-2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -88
-2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
-2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:08:47 +0000: Entering background...
-2020-05-02 20:08:47 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
-2020-05-02 20:08:47 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
-2020-05-02 20:08:47 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:08:47 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -70
-2020-05-02 20:09:09 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -92
-2020-05-02 20:09:09 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -92
-2020-05-02 20:09:10 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -75
-2020-05-02 20:09:10 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -75
-2020-05-02 20:09:10 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
-2020-05-02 20:09:10 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
-2020-05-02 20:09:10 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:09:10 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
-2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
-2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
-2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -92
-2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
-2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
-2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
-2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
-2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
-2020-05-02 20:10:36 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -73
-2020-05-02 20:10:36 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
-2020-05-02 20:10:36 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -71
-2020-05-02 20:10:36 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -71
-2020-05-02 20:10:36 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
-2020-05-02 20:10:36 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -95
-2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -69
-2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -69
-2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
-2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
-2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
-2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
-&lt;/code&gt;&lt;/pre&gt;
-</content>
-		<summary>&lt;p&gt;Australia’s forthcoming contact tracing app will be fundamentally different to Singapore’s TraceTogether, with improvements having already been made to the latter's functionality.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/iphones-appearing-as-connected-devices</id>
-		<title>iPhones Appearing as Connected Device</title>
-		<link href="https://covidsafe.watch/issue-register/iphones-appearing-as-connected-devices" />
-		<updated />
-		<content>&lt;?# Twitter 1260768916994789376 /?&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/cve-2020-12857-tempid-identifier-was-static</id>
-		<title>CVE-2020-12857 - TempID identifier was static</title>
-		<link href="https://covidsafe.watch/issue-register/cve-2020-12857-tempid-identifier-was-static" />
-		<updated />
-		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The lifetime of this ID is important because it will uniquely identify your phone for this time interval. It doesn't say who you are, but it allows any Bluetooth device in range to know that it's the same phone it saw earlier. A simple example of how this could be abused is that it allows someone to track your movement as your ID shows up in multiple locations. Devices recording these IDs could provide effective distributed location tracing. This is why it's very important that the same ID is used for the shortest possible period.&lt;/p&gt;
-&lt;p&gt;A slightly more complicated example is that if I already know who someone is and can record their ID (by being within 20 metres of them for a few seconds), then I now can track that exact person. This would be especially worrying to victims of domestic violence (also note that the issues described here do not require access to an unlocked phone).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;From: &lt;a href="https://docs.google.com/document/d/1u5a5ersKBH6eG362atALrzuXo3zuZ70qrGomWVEC27U/edit#"&gt;https://docs.google.com/document/d/1u5a5ersKBH6eG362atALrzuXo3zuZ70qrGomWVEC27U/edit#&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id="impact-risk"&gt;Impact / Risk&lt;/h1&gt;
-&lt;?# Twitter 1261109574263730177 /?&gt;
-&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;This issue was first reported to privacy&amp;#64;health.gov.au at 1:19am on 27/04/2020, and subsequently by in-app feedback later that day. It was also reported to asd.assist&amp;#64;defence.gov.au at 4:52pm on 27/04/2020.&lt;/li&gt;
-&lt;li&gt;This issue was first reported to the Singapore OpenTrace team at 12:38am on 30/04/2020 and &lt;a href="https://github.com/opentrace-community/opentrace-android/commit/0c7f7f6c4b265140f86b91f8e9e1ec70f5cd67ba"&gt;was fixed in this commit&lt;/a&gt; to the opentrace-android repository at 7:11pm on the same day.&lt;/li&gt;
-&lt;li&gt;This issue was fixed in v1.0.17 released on 14/05/2020 (see note at end)&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-		<summary>&lt;p&gt;The lifetime of this ID is important because it will uniquely identify your phone for this time interval. It doesn't say who you are, but it allows any Bluetooth device in range to know that it's the same phone it saw earlier. A simple example of how this could be abused is that it allows someone to track your movement as your ID shows up in multiple locations. Devices recording these IDs could provide effective distributed location tracing. This is why it's very important that the same ID is used for the shortest possible period.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/cve-2020-12856-long-term-tracking-and-possibly-enables-other-bluetooth-based-attack-vectors</id>
-		<title>CVE-2020-12856 - Long-term tracking and possibly enables other bluetooth based attack vectors</title>
-		<link href="https://covidsafe.watch/issue-register/cve-2020-12856-long-term-tracking-and-possibly-enables-other-bluetooth-based-attack-vectors" />
-		<updated />
-		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Authors: Jim Mussared (micropython.org), Alwen Tiu (The Australian National University)&lt;/p&gt;
-&lt;p&gt;A vulnerability has been identified in the implementation of the Android version of Australia's COVIDSafe contact tracing app that may affect several other contact tracing apps that share a similar architecture, such as Singapore's TraceTogether and Alberta's ABTraceTogether. This issue is being tracked using the CVE ID CVE-2020-12856. The vulnerability allows for long term tracking of users of the affected apps, and possibly enables other bluetooth-based attack vectors.&lt;/p&gt;
-&lt;p&gt;The details of the issue are still currently under embargo, until the developers of the affected apps have been notified and given a chance to put in place mitigation strategies. After the embargo period ends, more details of the issue will be published here.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;From: &lt;a href="https://github.com/alwentiu/COVIDSafe-CVE-2020-12856"&gt;https://github.com/alwentiu/COVIDSafe-CVE-2020-12856&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This can be applied in a couple of different ways:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;iPhone. Although it still only requires simple equipment and limited expertise, it's harder to pull off. However, it allows for permanent tracking of an iPhone even when the COVIDSafe app is uninstalled. This gives access to the full device name normally hidden on iPhone.&lt;/li&gt;
-&lt;li&gt;Android. This allows for simple long-term tracking of an Android device (similar in execution to Issue #1 and #2) while the app is still installed.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unlike issue &lt;a href="https://covidsafe.watch/issue-register/CVE-2020-12857-tempid-identifier-was-static"&gt;CVE-2020-12857&lt;/a&gt; and Issue #2, this persists after reboot on both iPhone and Android.&lt;/p&gt;
-&lt;p&gt;This applies to all contact tracing apps based on a similar protocol (e.g. confirmed for UK, Singapore)&lt;/p&gt;
-&lt;p&gt;I strongly recommend that the Google/Apple protocol is adopted instead. When possible I will add mitigation details.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;From: &lt;a href="https://docs.google.com/document/d/1u5a5ersKBH6eG362atALrzuXo3zuZ70qrGomWVEC27U/edit#"&gt;https://docs.google.com/document/d/1u5a5ersKBH6eG362atALrzuXo3zuZ70qrGomWVEC27U/edit#&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;2020/05/15 - GitHub repository created at &lt;a href="https://github.com/alwentiu/COVIDSafe-CVE-2020-12856"&gt;https://github.com/alwentiu/COVIDSafe-CVE-2020-12856&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Lacking an official disclosure/bug bounty program, we have now (5:00pm on 05/05/2020) raised this informally with the DTA and ASD/ACSC though available channels, with as much detail as possible.&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-		<summary>&lt;p&gt;Authors: Jim Mussared (micropython.org), Alwen Tiu (The Australian National University)&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/cve-2020-12717-ios-bluetooth-denial-of-service</id>
-		<title>CVE-2020-12717 - iOS Bluetooth Denial of Service</title>
-		<link href="https://covidsafe.watch/issue-register/cve-2020-12717-ios-bluetooth-denial-of-service" />
-		<updated />
-		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
-&lt;p&gt;COVIDSafe for iOS, versions 1.0 and 1.1 contain a denial of service vulnerability, inherited from the OpenTrace code. The coding error allows an attacker within Bluetooth range to crash the application. This causes no further records of contacts to be stored until the user manually reopens the application. Only when the exploit is stopped, or the user is out of range, is the application able to run again. If attackers (such as a misguided group of activists) were motivated to disrupt the COVIDSafe system, they could use this bug to prevent contact exchanges in busy, popular areas.&lt;/p&gt;
-&lt;?# Youtube 7UdVHB1ohNo /?&gt;
-&lt;p&gt;This bug also affected Singapore’s TraceTogether, Alberta’s ABTraceTogether and Poland’s ProteGO.&lt;/p&gt;
-&lt;p&gt;This is a fairly obvious bug that should have been picked up in an automated scan and/or an in-depth security review.&lt;/p&gt;
-&lt;p&gt;The model that governments have chosen to build on OpenTrace has made the disclosure process extremely painful. It seems as though each government received a code drop of OpenTrace at some point in time, and from there on there was little to no communication. There’s no central repository they all build upon, no process for communicating bugs up or downstream, and in fact no security contacts that we could find at all. we tried contacting each entity separately through the traditional support request forms, but did not get a response from any, apart from the DTA who we happened to have a specific email address for. If they had followed an established upstream/downstream model or all contributed to a monorepo, there would have been significant advantages to all involved.
-As much as was my wish, it seemed impossible to coordinate disclosure between all affected entities. And there could be more affected applications that we just don’t know about.&lt;/p&gt;
-&lt;h1 id="technical-analysis"&gt;Technical Analysis&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;wabz/covidsafe-ios-vulnerability-cve-2020-12717-30dc003f9708"&gt;https://medium.com/&amp;#64;wabz/covidsafe-ios-vulnerability-cve-2020-12717-30dc003f9708&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id="exploit"&gt;Exploit&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://github.com/wabzqem/covidsafe-CVE-2020-12717-exploit"&gt;https://github.com/wabzqem/covidsafe-CVE-2020-12717-exploit&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
-&lt;p&gt;The response from the disclosure of this particular vulnerability was very positive:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;6/5/20 22:57: Information of bug shared with DTA&lt;/li&gt;
-&lt;li&gt;7/5/20 07:54: Response confirming receipt and that they were looking into it.&lt;/li&gt;
-&lt;li&gt;7/5/20 13:13: DTA confirmed the bug and that they would have a fix in the next release&lt;/li&gt;
-&lt;li&gt;8/5/20 19:03: DTA said they had fixed the bug and shared a timeframe for fix, and that upgrade advice for users would be settled.&lt;/li&gt;
-&lt;li&gt;14/5/20: Fix released to users in the App Store.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A fast response, continuous updates with a good outcome.&lt;/p&gt;
-&lt;?# Twitter 1260743270629388289 /?&gt;
-&lt;?# Twitter 1260732343616077824 /?&gt;
-&lt;h1 id="acknowledgements"&gt;Acknowledgements&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Contents from this page were mirrored from &lt;a href="https://medium.com/&amp;#64;wabz/covidsafe-ios-vulnerability-cve-2020-12717-30dc003f9708"&gt;https://medium.com/&amp;#64;wabz/covidsafe-ios-vulnerability-cve-2020-12717-30dc003f9708&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-		<summary>&lt;p&gt;COVIDSafe for iOS, versions 1.0 and 1.1 contain a denial of service vulnerability, inherited from the OpenTrace code. The coding error allows an attacker within Bluetooth range to crash the application. This causes no further records of contacts to be stored until the user manually reopens the application. Only when the exploit is stopped, or the user is out of range, is the application able to run again. If attackers (such as a misguided group of activists) were motivated to disrupt the COVIDSafe system, they could use this bug to prevent contact exchanges in busy, popular areas.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/covidsafe-server-sourcecode</id>
-		<title>Server Sourcecode</title>
-		<link href="https://covidsafe.watch/issue-register/covidsafe-server-sourcecode" />
-		<updated />
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/covidsafe-not-available-in-international-appstores</id>
-		<title>Covidsafe Not Available In International Appstores</title>
-		<link href="https://covidsafe.watch/issue-register/covidsafe-not-available-in-international-appstores" />
-		<updated />
-		<content>&lt;p&gt;Title: COVIDSafe not available in international app stores&lt;/p&gt;
-&lt;?# Twitter 1261145980092604416 /?&gt;
-&lt;?# Twitter 1261535031366873090 /?&gt;
-</content>
-		<summary>&lt;p&gt;Title: COVIDSafe not available in international app stores&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/covidsafe-application-sourcecode</id>
-		<title>COVIDSafe Application Sourcecode</title>
-		<link href="https://covidsafe.watch/issue-register/covidsafe-application-sourcecode" />
-		<updated />
-		<content>&lt;?# Twitter 1261151214298750977 /?&gt;
-&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;14th April 2020. v1.0.17 was released to the App Stores but the source code has not been released.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;?# Twitter 1260734086097670144 /?&gt;
-&lt;?# Twitter 1260736402410487809 /?&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/community-engagement</id>
-		<title>Community engagement</title>
-		<link href="https://covidsafe.watch/issue-register/community-engagement" />
-		<updated />
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/bluetooth-interference</id>
-		<title>Bluetooth Interference</title>
-		<link href="https://covidsafe.watch/issue-register/bluetooth-interference" />
-		<updated />
-		<content>&lt;?# Twitter 1261826148020809728 /?&gt;
-&lt;?# Twitter 1261837148224811009 /?&gt;
-&lt;?# Twitter 1262302097178910721 /?&gt;
-&lt;?# Twitter 1262518353060442112 /?&gt;
-&lt;?# Twitter 1263248851747520512 /?&gt;
-</content>
-	</entry>
-	<entry>
-		<id>https://covidsafe.watch/issue-register/blood-glucose-monitor-incompatibility</id>
-		<title>Blood Glucose Monitor Incompatibility</title>
-		<link href="https://covidsafe.watch/issue-register/blood-glucose-monitor-incompatibility" />
-		<updated />
-		<content>&lt;?# Twitter 1256725186587455488 /?&gt;
-&lt;?# Twitter 1255671094800871426 /?&gt;
-&lt;?# Twitter 1256727338106023936 /?&gt;
-&lt;?# Twitter 1256501782148075520 /?&gt;
+		<content>&lt;?# Twitter 1256937599064653824 /?&gt;
+&lt;?# Twitter 1260183690396594177 /?&gt;
+&lt;?# Twitter 1262260634957144065 /?&gt;
 </content>
 	</entry>
 	<entry>
@@ -1346,26 +473,899 @@ Peripheral advertising..
 		<summary>&lt;p&gt;Australia’s forthcoming contact tracing app will be fundamentally different to Singapore’s TraceTogether, with improvements having already been made to the latter's functionality.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://covidsafe.watch/issue-register/battery-usage</id>
-		<title>Battery Usage</title>
-		<link href="https://covidsafe.watch/issue-register/battery-usage" />
+		<id>https://covidsafe.watch/issue-register/blood-glucose-monitor-incompatibility</id>
+		<title>Blood Glucose Monitor Incompatibility</title>
+		<link href="https://covidsafe.watch/issue-register/blood-glucose-monitor-incompatibility" />
 		<updated />
-		<content>&lt;?# Twitter 1256937599064653824 /?&gt;
-&lt;?# Twitter 1260183690396594177 /?&gt;
-&lt;?# Twitter 1262260634957144065 /?&gt;
+		<content>&lt;?# Twitter 1256725186587455488 /?&gt;
+&lt;?# Twitter 1255671094800871426 /?&gt;
+&lt;?# Twitter 1256727338106023936 /?&gt;
+&lt;?# Twitter 1256501782148075520 /?&gt;
 </content>
 	</entry>
 	<entry>
-		<id>https://covidsafe.watch/issue-register/accessibility</id>
-		<title>Accessibility</title>
-		<link href="https://covidsafe.watch/issue-register/accessibility" />
+		<id>https://covidsafe.watch/issue-register/bluetooth-interference</id>
+		<title>Bluetooth Interference</title>
+		<link href="https://covidsafe.watch/issue-register/bluetooth-interference" />
 		<updated />
-		<content>&lt;blockquote&gt;
-&lt;p&gt;Vision and hearing-impaired people are also at a disadvantage in using the app. Testing by disability groups has found that it is not fully screen reader accessible, and there is no known Auslan guide on access and use. There is an urgent need for immediate consultation with this community to enable accessibility features to be built into the app design and inform any future iterations&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://www.afdo.org.au/covidsafe-app-community-sector-letter/"&gt;https://www.afdo.org.au/covidsafe-app-community-sector-letter/&lt;/a&gt;&lt;/p&gt;
-&lt;?# Twitter 1256939183853064192 /?&gt;
+		<content>&lt;?# Twitter 1261826148020809728 /?&gt;
+&lt;?# Twitter 1261837148224811009 /?&gt;
+&lt;?# Twitter 1262302097178910721 /?&gt;
+&lt;?# Twitter 1262518353060442112 /?&gt;
+&lt;?# Twitter 1263248851747520512 /?&gt;
 </content>
-		<summary>&lt;p&gt;Vision and hearing-impaired people are also at a disadvantage in using the app. Testing by disability groups has found that it is not fully screen reader accessible, and there is no known Auslan guide on access and use. There is an urgent need for immediate consultation with this community to enable accessibility features to be built into the app design and inform any future iterations&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/community-engagement</id>
+		<title>Community engagement</title>
+		<link href="https://covidsafe.watch/issue-register/community-engagement" />
+		<updated />
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/covidsafe-application-sourcecode</id>
+		<title>COVIDSafe Application Sourcecode</title>
+		<link href="https://covidsafe.watch/issue-register/covidsafe-application-sourcecode" />
+		<updated />
+		<content>&lt;?# Twitter 1261151214298750977 /?&gt;
+&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;14th April 2020. v1.0.17 was released to the App Stores but the source code has not been released.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;?# Twitter 1260734086097670144 /?&gt;
+&lt;?# Twitter 1260736402410487809 /?&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/covidsafe-not-available-in-international-appstores</id>
+		<title>Covidsafe Not Available In International Appstores</title>
+		<link href="https://covidsafe.watch/issue-register/covidsafe-not-available-in-international-appstores" />
+		<updated />
+		<content>&lt;p&gt;Title: COVIDSafe not available in international app stores&lt;/p&gt;
+&lt;?# Twitter 1261145980092604416 /?&gt;
+&lt;?# Twitter 1261535031366873090 /?&gt;
+</content>
+		<summary>&lt;p&gt;Title: COVIDSafe not available in international app stores&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/covidsafe-server-sourcecode</id>
+		<title>Server Sourcecode</title>
+		<link href="https://covidsafe.watch/issue-register/covidsafe-server-sourcecode" />
+		<updated />
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/cve-2020-12717-ios-bluetooth-denial-of-service</id>
+		<title>CVE-2020-12717 - iOS Bluetooth Denial of Service</title>
+		<link href="https://covidsafe.watch/issue-register/cve-2020-12717-ios-bluetooth-denial-of-service" />
+		<updated />
+		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
+&lt;p&gt;COVIDSafe for iOS, versions 1.0 and 1.1 contain a denial of service vulnerability, inherited from the OpenTrace code. The coding error allows an attacker within Bluetooth range to crash the application. This causes no further records of contacts to be stored until the user manually reopens the application. Only when the exploit is stopped, or the user is out of range, is the application able to run again. If attackers (such as a misguided group of activists) were motivated to disrupt the COVIDSafe system, they could use this bug to prevent contact exchanges in busy, popular areas.&lt;/p&gt;
+&lt;?# Youtube 7UdVHB1ohNo /?&gt;
+&lt;p&gt;This bug also affected Singapore’s TraceTogether, Alberta’s ABTraceTogether and Poland’s ProteGO.&lt;/p&gt;
+&lt;p&gt;This is a fairly obvious bug that should have been picked up in an automated scan and/or an in-depth security review.&lt;/p&gt;
+&lt;p&gt;The model that governments have chosen to build on OpenTrace has made the disclosure process extremely painful. It seems as though each government received a code drop of OpenTrace at some point in time, and from there on there was little to no communication. There’s no central repository they all build upon, no process for communicating bugs up or downstream, and in fact no security contacts that we could find at all. we tried contacting each entity separately through the traditional support request forms, but did not get a response from any, apart from the DTA who we happened to have a specific email address for. If they had followed an established upstream/downstream model or all contributed to a monorepo, there would have been significant advantages to all involved.
+As much as was my wish, it seemed impossible to coordinate disclosure between all affected entities. And there could be more affected applications that we just don’t know about.&lt;/p&gt;
+&lt;h1 id="technical-analysis"&gt;Technical Analysis&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;wabz/covidsafe-ios-vulnerability-cve-2020-12717-30dc003f9708"&gt;https://medium.com/&amp;#64;wabz/covidsafe-ios-vulnerability-cve-2020-12717-30dc003f9708&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="exploit"&gt;Exploit&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://github.com/wabzqem/covidsafe-CVE-2020-12717-exploit"&gt;https://github.com/wabzqem/covidsafe-CVE-2020-12717-exploit&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
+&lt;p&gt;The response from the disclosure of this particular vulnerability was very positive:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;6/5/20 22:57: Information of bug shared with DTA&lt;/li&gt;
+&lt;li&gt;7/5/20 07:54: Response confirming receipt and that they were looking into it.&lt;/li&gt;
+&lt;li&gt;7/5/20 13:13: DTA confirmed the bug and that they would have a fix in the next release&lt;/li&gt;
+&lt;li&gt;8/5/20 19:03: DTA said they had fixed the bug and shared a timeframe for fix, and that upgrade advice for users would be settled.&lt;/li&gt;
+&lt;li&gt;14/5/20: Fix released to users in the App Store.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A fast response, continuous updates with a good outcome.&lt;/p&gt;
+&lt;?# Twitter 1260743270629388289 /?&gt;
+&lt;?# Twitter 1260732343616077824 /?&gt;
+&lt;h1 id="acknowledgements"&gt;Acknowledgements&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Contents from this page were mirrored from &lt;a href="https://medium.com/&amp;#64;wabz/covidsafe-ios-vulnerability-cve-2020-12717-30dc003f9708"&gt;https://medium.com/&amp;#64;wabz/covidsafe-ios-vulnerability-cve-2020-12717-30dc003f9708&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		<summary>&lt;p&gt;COVIDSafe for iOS, versions 1.0 and 1.1 contain a denial of service vulnerability, inherited from the OpenTrace code. The coding error allows an attacker within Bluetooth range to crash the application. This causes no further records of contacts to be stored until the user manually reopens the application. Only when the exploit is stopped, or the user is out of range, is the application able to run again. If attackers (such as a misguided group of activists) were motivated to disrupt the COVIDSafe system, they could use this bug to prevent contact exchanges in busy, popular areas.&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/cve-2020-12856-long-term-tracking-and-possibly-enables-other-bluetooth-based-attack-vectors</id>
+		<title>CVE-2020-12856 - Long-term tracking and possibly enables other bluetooth based attack vectors</title>
+		<link href="https://covidsafe.watch/issue-register/cve-2020-12856-long-term-tracking-and-possibly-enables-other-bluetooth-based-attack-vectors" />
+		<updated />
+		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Authors: Jim Mussared (micropython.org), Alwen Tiu (The Australian National University)&lt;/p&gt;
+&lt;p&gt;A vulnerability has been identified in the implementation of the Android version of Australia's COVIDSafe contact tracing app that may affect several other contact tracing apps that share a similar architecture, such as Singapore's TraceTogether and Alberta's ABTraceTogether. This issue is being tracked using the CVE ID CVE-2020-12856. The vulnerability allows for long term tracking of users of the affected apps, and possibly enables other bluetooth-based attack vectors.&lt;/p&gt;
+&lt;p&gt;The details of the issue are still currently under embargo, until the developers of the affected apps have been notified and given a chance to put in place mitigation strategies. After the embargo period ends, more details of the issue will be published here.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From: &lt;a href="https://github.com/alwentiu/COVIDSafe-CVE-2020-12856"&gt;https://github.com/alwentiu/COVIDSafe-CVE-2020-12856&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This can be applied in a couple of different ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;iPhone. Although it still only requires simple equipment and limited expertise, it's harder to pull off. However, it allows for permanent tracking of an iPhone even when the COVIDSafe app is uninstalled. This gives access to the full device name normally hidden on iPhone.&lt;/li&gt;
+&lt;li&gt;Android. This allows for simple long-term tracking of an Android device (similar in execution to Issue #1 and #2) while the app is still installed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unlike issue &lt;a href="https://covidsafe.watch/issue-register/CVE-2020-12857-tempid-identifier-was-static"&gt;CVE-2020-12857&lt;/a&gt; and Issue #2, this persists after reboot on both iPhone and Android.&lt;/p&gt;
+&lt;p&gt;This applies to all contact tracing apps based on a similar protocol (e.g. confirmed for UK, Singapore)&lt;/p&gt;
+&lt;p&gt;I strongly recommend that the Google/Apple protocol is adopted instead. When possible I will add mitigation details.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From: &lt;a href="https://docs.google.com/document/d/1u5a5ersKBH6eG362atALrzuXo3zuZ70qrGomWVEC27U/edit#"&gt;https://docs.google.com/document/d/1u5a5ersKBH6eG362atALrzuXo3zuZ70qrGomWVEC27U/edit#&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2020/05/15 - GitHub repository created at &lt;a href="https://github.com/alwentiu/COVIDSafe-CVE-2020-12856"&gt;https://github.com/alwentiu/COVIDSafe-CVE-2020-12856&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Lacking an official disclosure/bug bounty program, we have now (5:00pm on 05/05/2020) raised this informally with the DTA and ASD/ACSC though available channels, with as much detail as possible.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		<summary>&lt;p&gt;Authors: Jim Mussared (micropython.org), Alwen Tiu (The Australian National University)&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/cve-2020-12857-tempid-identifier-was-static</id>
+		<title>CVE-2020-12857 - TempID identifier was static</title>
+		<link href="https://covidsafe.watch/issue-register/cve-2020-12857-tempid-identifier-was-static" />
+		<updated />
+		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The lifetime of this ID is important because it will uniquely identify your phone for this time interval. It doesn't say who you are, but it allows any Bluetooth device in range to know that it's the same phone it saw earlier. A simple example of how this could be abused is that it allows someone to track your movement as your ID shows up in multiple locations. Devices recording these IDs could provide effective distributed location tracing. This is why it's very important that the same ID is used for the shortest possible period.&lt;/p&gt;
+&lt;p&gt;A slightly more complicated example is that if I already know who someone is and can record their ID (by being within 20 metres of them for a few seconds), then I now can track that exact person. This would be especially worrying to victims of domestic violence (also note that the issues described here do not require access to an unlocked phone).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From: &lt;a href="https://docs.google.com/document/d/1u5a5ersKBH6eG362atALrzuXo3zuZ70qrGomWVEC27U/edit#"&gt;https://docs.google.com/document/d/1u5a5ersKBH6eG362atALrzuXo3zuZ70qrGomWVEC27U/edit#&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="impact-risk"&gt;Impact / Risk&lt;/h1&gt;
+&lt;?# Twitter 1261109574263730177 /?&gt;
+&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;This issue was first reported to privacy&amp;#64;health.gov.au at 1:19am on 27/04/2020, and subsequently by in-app feedback later that day. It was also reported to asd.assist&amp;#64;defence.gov.au at 4:52pm on 27/04/2020.&lt;/li&gt;
+&lt;li&gt;This issue was first reported to the Singapore OpenTrace team at 12:38am on 30/04/2020 and &lt;a href="https://github.com/opentrace-community/opentrace-android/commit/0c7f7f6c4b265140f86b91f8e9e1ec70f5cd67ba"&gt;was fixed in this commit&lt;/a&gt; to the opentrace-android repository at 7:11pm on the same day.&lt;/li&gt;
+&lt;li&gt;This issue was fixed in v1.0.17 released on 14/05/2020 (see note at end)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		<summary>&lt;p&gt;The lifetime of this ID is important because it will uniquely identify your phone for this time interval. It doesn't say who you are, but it allows any Bluetooth device in range to know that it's the same phone it saw earlier. A simple example of how this could be abused is that it allows someone to track your movement as your ID shows up in multiple locations. Devices recording these IDs could provide effective distributed location tracing. This is why it's very important that the same ID is used for the shortest possible period.&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/iphones-appearing-as-connected-devices</id>
+		<title>iPhones Appearing as Connected Device</title>
+		<link href="https://covidsafe.watch/issue-register/iphones-appearing-as-connected-devices" />
+		<updated />
+		<content>&lt;?# Twitter 1260768916994789376 /?&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/iphones-not-working-in-the-background</id>
+		<title>iPhone's not working in the background</title>
+		<link href="https://covidsafe.watch/issue-register/iphones-not-working-in-the-background" />
+		<updated />
+		<content>&lt;h1 id="claim"&gt;Claim&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Australia’s forthcoming contact tracing app will be fundamentally different to Singapore’s TraceTogether, with improvements having already been made to the latter's functionality.&lt;/p&gt;
+&lt;p&gt;Acting health department secretary Caroline Edwards told a senate inquiry into COVID-19 on Thursday that although the app is derived from TraceTogether, its code base will be unique.&lt;/p&gt;
+&lt;p&gt;“I don’t think the Singapore TraceTogether app is the model,” she said in response to questions from Labor senator Murray Watt, adding that it has been an “important contributor”&lt;/p&gt;
+&lt;p&gt;But Australia’s app, which is being developed by the Digital Transformation Agency, is expected to build on TraceTogether elements, particularly around Bluetooth on iPhones.&lt;/p&gt;
+&lt;p&gt;Edwards said that the DTA app would not need to constantly run in the foreground for contacts to be recorded, although he admitted Bluetooth would work better with the app open.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From: &lt;a href="https://www.itnews.com.au/news/australias-covid-tracing-app-better-than-singapores-health-chief-547126"&gt;https://www.itnews.com.au/news/australias-covid-tracing-app-better-than-singapores-health-chief-547126&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="technical-analysis"&gt;Technical Analysis&lt;/h1&gt;
+&lt;h2 id="jim-mussared"&gt;Jim Mussared&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jim Mussared is one Australian developer who's been working on uncovering the app's flaws to ensure it's doing what it's meant to. For him, it's made one thing particularly clear — the DTA hasn't been easy to work with when it comes to disclosing bugs.&lt;/p&gt;
+&lt;p&gt;&amp;quot;Seeing the source code allows us to do a direct comparison to the Singapore [TraceTogether] code,&amp;quot; Mussared said to Gizmodo Australia over email.&lt;/p&gt;
+&lt;p&gt;&amp;quot;One very clear result of this is that there were zero functional changes to the iOS BLE backgrounding behaviour (CentralController.swift). We know that the Singapore team knew that background-to-background iPhone didn't work, so any claims by the DTA that they 'fixed it' indicate that either they never actually tested [or] investigated it, or their testing methodology was flawed.&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From: &lt;a href="https://www.gizmodo.com.au/2020/05/covidsafe-bug-reporting-problems/"&gt;https://www.gizmodo.com.au/2020/05/covidsafe-bug-reporting-problems/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="richard-nelson"&gt;Richard Nelson&lt;/h2&gt;
+&lt;p&gt;From: &lt;a href="https://docs.google.com/document/d/1sviVey1jCk97BACwkAJMctG8rFlC7Mf8pMpluW6VOQw/edit"&gt;https://docs.google.com/document/d/1sviVey1jCk97BACwkAJMctG8rFlC7Mf8pMpluW6VOQw/edit&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This document describes a bug as observed in the COVIDSafe iOS application, causing it to be much less effective than it could be, while the application is not in the foreground.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="repeated-scanning-for-peripherals-and-not-in-the-background"&gt;Repeated scanning for peripherals (and not in the background)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The below reproducible output shows evidence of the iOS application continually initiating scans in the foreground, and never initiating in the background. A Frida script hooks the CBCentralManager scanForPeripheralsWithServices method, and displays the first argument (the app’s service UUID) when run. When the application is in foreground state, the scan is run every minute. Once the app goes into the background, we don’t observe any scans, and stopScan has been called meaning the bluetooth central manager will not send any more discovered peripherals in central mode. When it’s put in the foreground again, the scan runs again. Be sure to run this without other devices interfering. Timestamps are important, the app starts in the foreground. Important to note is that it’s not actually required in iOS to continue requesting a scan. This only needs to happen once, and iOS will call centralManager(_:didDiscover:advertisementData:rssi:) when a peripheral is discovered in future, with some limitations.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;2020-05-02 01:28:17.329+10:00
+[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
+    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
+)&amp;quot;]
+
+
+2020-05-02 01:29:17.329+10:00
+[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
+    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
+)&amp;quot;]
+
+
+2020-05-02 01:30:17.328+10:00
+[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
+    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
+)&amp;quot;]
+
+
+2020-05-02 01:31:17.351+10:00
+[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
+    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
+)&amp;quot;]
+
+
+2020-05-02 01:31:53.065+10:00
+Entered background
+
+
+2020-05-02 01:35:09.530+10:00
+[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
+    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
+)&amp;quot;]
+
+
+2020-05-02 01:35:09.532+10:00
+Entered foreground
+
+
+2020-05-02 01:35:17.349+10:00
+[CBCentralManager scanForPeripheralsWithServices:&amp;#64;&amp;quot;(
+    &amp;quot;B82AB3FC-1595-4F6A-80F0-FE094CC218F9&amp;quot;
+)&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="debug-breakpoints"&gt;Debug Breakpoints&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Further evidence can be seen by setting up a debugger on the COVIDSafe app. Using a disassembler, you can find the entry point of the delegate method:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;centralManager(_:didDiscover:advertisementData:rssi:)&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This delegate method tells the delegate the central manager discovered a peripheral while scanning for devices. In the COVIDSafe binary, this method is at address 0x100055c14. To set a breakpoint, you first need to calculate the ASLR offset. You can do this by using lldb to show where the COVIDSafe image is based. Here’s a video that shows the breakpoint correctly hitting once the second iOS device runs the scan (when the app is opened). This doesn’t show it not occuring (the above script does), but that would have been a very long video, as the breakpoint never occurs. This follows from the above evidence that scan results are not sent to the application.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="the-bug"&gt;The Bug&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The COVIDSafe application code is derived from Opentrace. In the OpenTrace source code, it sets up a timer to run here:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/opentrace-community/opentrace-ios/blob/75fc506bef34ba48a727f9758f94823b9b4a2286/OpenTrace/Bluetrace/CentralController.swift#L86"&gt;https://github.com/opentrace-community/opentrace-ios/blob/75fc506bef34ba48a727f9758f94823b9b4a2286/OpenTrace/Bluetrace/CentralController.swift#L86&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The main problem here is that it is continuously starting and stopping scans, using a timer. When the application is put into the background, the timer started on the main thread’s execution is paused, and scans do not run. When the application enters the foreground again, it runs immediately because the timer suddenly expires. It then may run again shortly after (as seen in the script output above).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Calling stopScan ensures that peripherals discovered on future system scan results are not reported to the app.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Based on the evidence of the behaviour above, we can readily believe that this bug (or a variant of) has been copied to the Australian COVIDSafe application.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="the-fix"&gt;The Fix&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I believe the application only needs to call scanForPeripherals once. I have an example project which continues to get peripheral discovery callbacks when it is in the background. The key to this, apart from not continuously starting and stopping scans is to set CBCentralManagerScanOptionAllowDuplicatesKey to true, allowing multiple discoveries of the same peripheral. The behaviour of this changes in the background, but on system scans devices continue to be reported to the app (multiple times). Example output from the application is at the bottom of this document.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="frida-trace-with-no-other-devices"&gt;Frida Trace with no other devices&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Frida-trace output of the COVIDSafe app showing timings, application going from foreground to background, stopScan being called, and then scan resuming in foreground. No other devices with the COVIDSafe app in the foreground were present.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;           /* TID 0x2f0b */
+  4256 ms  -[CBCentralManager stopScan]
+  4256 ms     | -[CBCentralManager setIsScanning:0x0]
+           /* TID 0x407 */
+ 53301 ms  -[CBCentralManager cancelPeripheralConnection:0x2806f9360]
+ 53301 ms     | -[CBCentralManager cancelPeripheralConnection:0x2806f9360 options:0x2831fab20]
+ 53302 ms  -[NSKVONotifying_CBCentralManager dealloc]
+ 53302 ms  -[CBCentralManager scanForPeripheralsWithServices:0x2839b6f40 options:0x0]
+ 53302 ms     | -[CBCentralManager setIsScanning:0x1]
+           /* TID 0x3927 */
+ 53442 ms  -[CBCentralManager handleMsg:0x3c args:0x280ef5a40]
+ 53443 ms     | -[CBCentralManager handlePeripheralDiscovered:0x280ef5a40]
+ 53443 ms     |    | -[CBCentralManager peripheralWithInfo:0x280ef5a40]
+ 53443 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x2835fcdb0]
+ 53443 ms     |    | -[CBCentralManager delegate]
+ 53444 ms     |    | -[NSKVONotifying_CBCentralManager class]
+ 53444 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x281cfdff0]
+ 53444 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
+ 53445 ms     |    | -[CBCentralManager connectPeripheral:0x2806f9360 options:0x0]
+           /* TID 0x2f0b */
+ 53936 ms  -[CBCentralManager handleMsg:0x3d args:0x2819ccd80]
+ 53937 ms     | -[CBCentralManager handlePeripheralConnectionCompleted:0x2819ccd80]
+ 53937 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x2831f8420]
+ 53937 ms     |    | -[CBCentralManager delegate]
+ 53937 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x281cfdff0]
+ 53937 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
+ 54022 ms  -[CBCentralManager handleMsg:0x3e args:0x2822b7500]
+ 54022 ms     | -[CBCentralManager handlePeripheralCLReady:0x2822b7500]
+ 54022 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x2831fa560]
+ 54023 ms  -[CBCentralManager handleMsg:0x5e args:0x2822b5380]
+ 54023 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831f8420]
+           /* TID 0x3927 */
+ 54682 ms  -[CBCentralManager handleMsg:0x6b args:0x2822b6bc0]
+ 54682 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831f81e0]
+ 54742 ms  -[CBCentralManager handleMsg:0x73 args:0x2819ccd00]
+ 54742 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831f8420]
+           /* TID 0x2f0b */
+ 54836 ms  -[CBCentralManager handleMsg:0x79 args:0x2819d4880]
+ 54836 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831fea00]
+ 54837 ms     | -[NSKVONotifying_CBCentralManager class]
+ 54837 ms     | -[NSKVONotifying_CBCentralManager class]
+           /* TID 0x3927 */
+ 54922 ms  -[NSKVONotifying_CBCentralManager class]
+ 54922 ms  -[NSKVONotifying_CBCentralManager class]
+ 54922 ms  -[NSKVONotifying_CBCentralManager class]
+           /* TID 0x2f0b */
+ 55011 ms  -[CBCentralManager handleMsg:0x7a args:0x2822b6dc0]
+ 55011 ms     | -[CBCentralManager peripheralWithIdentifier:0x2831f8420]
+ 55012 ms     | -[NSKVONotifying_CBCentralManager class]
+ 55012 ms     | -[CBCentralManager cancelPeripheralConnection:0x2806f9360]
+ 55012 ms     |    | -[CBCentralManager cancelPeripheralConnection:0x2806f9360 options:0x2831fd9e0]
+           /* TID 0x3927 */
+ 55014 ms  -[CBCentralManager handleMsg:0x3f args:0x2822b6980]
+ 55014 ms     | -[CBCentralManager handlePeripheralDisconnectionCompleted:0x2822b6980]
+ 55015 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x2831f81e0]
+ 55015 ms     |    | -[CBCentralManager delegate]
+ 55015 ms     |    | -[NSKVONotifying_CBCentralManager class]
+ 55102 ms  -[NSKVONotifying_CBCentralManager class]
+ 55102 ms  -[NSKVONotifying_CBCentralManager class]
+ 55102 ms  -[NSKVONotifying_CBCentralManager class]
+ 64255 ms  -[CBCentralManager stopScan]
+ 64260 ms     | -[CBCentralManager setIsScanning:0x0]
+           /* TID 0x407 */
+ 71969 ms  -[UIApplication _applicationDidEnterBackground]
+518229 ms  -[CBCentralManager cancelPeripheralConnection:0x2806f9360]
+518229 ms     | -[CBCentralManager cancelPeripheralConnection:0x2806f9360 options:0x2831fa780]
+518231 ms  -[NSKVONotifying_CBCentralManager dealloc]
+518231 ms  -[CBCentralManager scanForPeripheralsWithServices:0x2839b5650 options:0x0]
+518232 ms     | -[CBCentralManager setIsScanning:0x1]
+518233 ms  -[UIApplication _sendWillEnterForegroundCallbacks]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="frida-trace-with-other-device-scanning-while-in-background"&gt;Frida Trace with other device scanning while in background&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Frida-trace output showing scanning events when in background and COVIDSafe is opened on another iPhone:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;           /* TID 0xb13 */
+  6347 ms  -[CBCentralManager stopScan]
+  6348 ms     | -[CBCentralManager setIsScanning:0x0]
+           /* TID 0x407 */
+ 55403 ms  -[CBCentralManager cancelPeripheralConnection:0x2828ac000]
+ 55404 ms     | -[CBCentralManager cancelPeripheralConnection:0x2828ac000 options:0x281fb01c0]
+ 55404 ms  -[NSKVONotifying_CBCentralManager dealloc]
+ 55404 ms  -[CBCentralManager scanForPeripheralsWithServices:0x2817fc1b0 options:0x0]
+ 55405 ms     | -[CBCentralManager setIsScanning:0x1]
+           /* TID 0x666b */
+ 55460 ms  -[CBCentralManager handleMsg:0x3c args:0x28209c000]
+ 55460 ms     | -[CBCentralManager handlePeripheralDiscovered:0x28209c000]
+ 55460 ms     |    | -[CBCentralManager peripheralWithInfo:0x28209c000]
+ 55460 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x281b98030]
+ 55461 ms     |    | -[CBCentralManager delegate]
+ 55462 ms     |    | -[NSKVONotifying_CBCentralManager class]
+ 55462 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
+ 55463 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
+ 55463 ms     |    | -[CBCentralManager connectPeripheral:0x2828ac000 options:0x0]
+           /* TID 0xb13 */
+ 56256 ms  -[CBCentralManager handleMsg:0x3d args:0x2837d4300]
+ 56256 ms     | -[CBCentralManager handlePeripheralConnectionCompleted:0x2837d4300]
+ 56257 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb0060]
+ 56257 ms     |    | -[CBCentralManager delegate]
+ 56257 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
+ 56257 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
+ 56343 ms  -[CBCentralManager handleMsg:0x3e args:0x280c08540]
+ 56343 ms     | -[CBCentralManager handlePeripheralCLReady:0x280c08540]
+ 56344 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb8200]
+ 56344 ms  -[CBCentralManager handleMsg:0x5e args:0x280c08380]
+ 56344 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8060]
+           /* TID 0x666b */
+ 57003 ms  -[CBCentralManager handleMsg:0x6b args:0x280c084c0]
+ 57003 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8180]
+           /* TID 0xb13 */
+ 57063 ms  -[CBCentralManager handleMsg:0x73 args:0x2837e4100]
+ 57064 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8200]
+           /* TID 0x666b */
+ 57128 ms  -[CBCentralManager handleMsg:0x79 args:0x2837d4300]
+ 57129 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb01e0]
+ 57130 ms     | -[NSKVONotifying_CBCentralManager class]
+ 57130 ms     | -[NSKVONotifying_CBCentralManager class]
+           /* TID 0xb13 */
+ 57303 ms  -[CBCentralManager handleMsg:0x7a args:0x280c00100]
+ 57303 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb0080]
+ 57303 ms     | -[NSKVONotifying_CBCentralManager class]
+ 57303 ms     | -[CBCentralManager cancelPeripheralConnection:0x2828ac000]
+ 57304 ms     |    | -[CBCentralManager cancelPeripheralConnection:0x2828ac000 options:0x281fb0100]
+           /* TID 0x666b */
+ 57305 ms  -[CBCentralManager handleMsg:0x3f args:0x280c00100]
+ 57305 ms     | -[CBCentralManager handlePeripheralDisconnectionCompleted:0x280c00100]
+ 57305 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb01e0]
+ 57305 ms     |    | -[CBCentralManager delegate]
+ 57305 ms     |    | -[NSKVONotifying_CBCentralManager class]
+ 64532 ms  -[CBCentralManager handleMsg:0x3c args:0x2837d4280]
+ 64532 ms     | -[CBCentralManager handlePeripheralDiscovered:0x2837d4280]
+ 64532 ms     |    | -[CBCentralManager peripheralWithInfo:0x2837d4280]
+ 64533 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x281b98020]
+ 64533 ms     |    | -[CBCentralManager delegate]
+ 64534 ms     |    | -[NSKVONotifying_CBCentralManager class]
+ 64534 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
+ 64534 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
+ 64540 ms     |    | -[CBCentralManager connectPeripheral:0x282890000 options:0x0]
+           /* TID 0xb13 */
+ 66347 ms  -[CBCentralManager stopScan]
+ 66347 ms     | -[CBCentralManager setIsScanning:0x0]
+           /* TID 0x407 */
+ 73904 ms  -[UIApplication _applicationDidEnterBackground]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;At this point, I opened COVIDSafe on another iPhone. Note we are still in the background:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;247596 ms  -[CBCentralManager cancelPeripheralConnection:0x2828ac000]
+247608 ms     | -[CBCentralManager cancelPeripheralConnection:0x2828ac000 options:0x281fb8100]
+           /* TID 0xb13 */
+247609 ms  -[NSKVONotifying_CBCentralManager class]
+247610 ms  -[NSKVONotifying_CBCentralManager class]
+247610 ms  -[NSKVONotifying_CBCentralManager class]
+           /* TID 0x407 */
+247610 ms  -[CBCentralManager cancelPeripheralConnection:0x282890000]
+247610 ms     | -[CBCentralManager cancelPeripheralConnection:0x282890000 options:0x281fb89c0]
+247611 ms  -[NSKVONotifying_CBCentralManager dealloc]
+247611 ms  -[NSKVONotifying_CBCentralManager dealloc]
+247611 ms     | -[CBCentralManager cancelPeripheralConnection:0x282890000]
+247611 ms     |    | -[CBCentralManager cancelPeripheralConnection:0x282890000 options:0x281fb80e0]
+247611 ms  -[CBCentralManager scanForPeripheralsWithServices:0x281704510 options:0x0]
+247611 ms     | -[CBCentralManager setIsScanning:0x1]
+           /* TID 0x666b */
+247619 ms  -[CBCentralManager handleMsg:0x3f args:0x280c09040]
+247619 ms     | -[CBCentralManager handlePeripheralDisconnectionCompleted:0x280c09040]
+247619 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb8220]
+           /* TID 0x6e1f */
+247708 ms  -[CBCentralManager handleMsg:0x3c args:0x28209c0e0]
+247708 ms     | -[CBCentralManager handlePeripheralDiscovered:0x28209c0e0]
+247708 ms     |    | -[CBCentralManager peripheralWithInfo:0x28209c0e0]
+247708 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x281b982f0]
+247708 ms     |    | -[CBCentralManager dataArrayToUUIDArray:0x281b982e0]
+247709 ms     |    | -[CBCentralManager delegate]
+247710 ms     |    | -[NSKVONotifying_CBCentralManager class]
+247710 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
+247710 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
+247710 ms     |    | -[CBCentralManager connectPeripheral:0x2828ac000 options:0x0]
+247712 ms  -[CBCentralManager handleMsg:0x3d args:0x2837d4380]
+247713 ms     | -[CBCentralManager handlePeripheralConnectionCompleted:0x2837d4380]
+247713 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb0120]
+247713 ms     |    | -[CBCentralManager delegate]
+247713 ms     |    | -[NSKVONotifying_CBCentralManager setDelegate:0x283286fb0]
+247713 ms     |    |    | -[NSKVONotifying_CBCentralManager class]
+247721 ms  -[CBCentralManager handleMsg:0x6b args:0x280c08f80]
+247721 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8180]
+247771 ms  -[CBCentralManager handleMsg:0x73 args:0x2837e4800]
+247771 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb80c0]
+247801 ms  -[NSKVONotifying_CBCentralManager class]
+247801 ms  -[NSKVONotifying_CBCentralManager class]
+247801 ms  -[NSKVONotifying_CBCentralManager class]
+247836 ms  -[CBCentralManager handleMsg:0x79 args:0x2837d4380]
+247836 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb05a0]
+247837 ms     | -[NSKVONotifying_CBCentralManager class]
+247837 ms     | -[NSKVONotifying_CBCentralManager class]
+248010 ms  -[CBCentralManager handleMsg:0x7a args:0x280c08380]
+248011 ms     | -[CBCentralManager peripheralWithIdentifier:0x281fb8100]
+248011 ms     | -[NSKVONotifying_CBCentralManager class]
+248011 ms     | -[CBCentralManager cancelPeripheralConnection:0x2828ac000]
+248012 ms     |    | -[CBCentralManager cancelPeripheralConnection:0x2828ac000 options:0x281fb80a0]
+248013 ms  -[CBCentralManager handleMsg:0x3f args:0x280c01480]
+248013 ms     | -[CBCentralManager handlePeripheralDisconnectionCompleted:0x280c01480]
+248013 ms     |    | -[CBCentralManager peripheralWithIdentifier:0x281fb0940]
+248013 ms     |    | -[CBCentralManager delegate]
+248013 ms     |    | -[NSKVONotifying_CBCentralManager class]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Application comes into foreground here, approx 2 mins later.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;           /* TID 0x407 */
+269145 ms  -[UIApplication _sendWillEnterForegroundCallbacks]
+           /* TID 0x666b */
+269149 ms  -[CBCentralManager stopScan]
+269149 ms     | -[CBCentralManager setIsScanning:0x0]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Output from the example application. Note the continuous discovery after being put into the background.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;2020-05-02 20:08:39 +0000: Entering foreground...
+Powered on
+2020-05-02 20:08:39 +0000: Starting scan
+Peripheral advertising..
+2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:39 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -75
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:40 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:41 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -96
+2020-05-02 20:08:41 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -96
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
+2020-05-02 20:08:41 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
+2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -77
+2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -77
+2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
+2020-05-02 20:08:42 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -69
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -69
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -75
+2020-05-02 20:08:43 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:44 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -96
+2020-05-02 20:08:44 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -95
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -73
+2020-05-02 20:08:44 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:08:44 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -81
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -79
+2020-05-02 20:08:44 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -79
+2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
+2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:45 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -73
+2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:45 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
+2020-05-02 20:08:45 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
+2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
+2020-05-02 20:08:45 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
+2020-05-02 20:08:45 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
+2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -88
+2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -88
+2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:46 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -72
+2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:08:46 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:08:47 +0000: Entering background...
+2020-05-02 20:08:47 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
+2020-05-02 20:08:47 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
+2020-05-02 20:08:47 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:08:47 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -70
+2020-05-02 20:09:09 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -92
+2020-05-02 20:09:09 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -92
+2020-05-02 20:09:10 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -75
+2020-05-02 20:09:10 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -75
+2020-05-02 20:09:10 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
+2020-05-02 20:09:10 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
+2020-05-02 20:09:10 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:09:10 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
+2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -93
+2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -91
+2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -92
+2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
+2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
+2020-05-02 20:09:49 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
+2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
+2020-05-02 20:09:49 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -68
+2020-05-02 20:10:36 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -73
+2020-05-02 20:10:36 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -74
+2020-05-02 20:10:36 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -71
+2020-05-02 20:10:36 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -71
+2020-05-02 20:10:36 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -94
+2020-05-02 20:10:36 +0000: iPhone C7DED3F8-1E49-640A-839A-496DDCF5EC80 RSSI: -95
+2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -69
+2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -69
+2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
+2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -78
+2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
+2020-05-02 20:26:24 +0000: iPhone 13BA973A-A886-EDF6-EDD7-733AF21D77FC RSSI: -67
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+		<summary>&lt;p&gt;Australia’s forthcoming contact tracing app will be fundamentally different to Singapore’s TraceTogether, with improvements having already been made to the latter's functionality.&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/just-a-paint-job</id>
+		<title>Just a paint job</title>
+		<link href="https://covidsafe.watch/issue-register/just-a-paint-job" />
+		<updated />
+		<content>&lt;?# Twitter 1256952268206665730 /?&gt;
+&lt;?# Twitter 1257600104183164929 /?&gt;
+&lt;?# Twitter 1257506430476640256 /?&gt;
+&lt;?# Twitter 1257506832140038145 /?&gt;
+&lt;?# Twitter 1257507532173541378 /?&gt;
+&lt;?# Twitter 1257524946361741317 /?&gt;
+&lt;?# Twitter 1257532378320265216 /?&gt;
+&lt;?# Twitter 1257537188540985349 /?&gt;
+&lt;?# Twitter 1257537587306090498 /?&gt;
+&lt;?# Twitter 1257540470613237765 /?&gt;
+&lt;?# Twitter 1257540474048581632 /?&gt;
+&lt;?# Twitter 1257541996874326018 /?&gt;
+&lt;?# Twitter 1257547477542027270 /?&gt;
+&lt;p&gt;&lt;a href="https://www.theregister.co.uk/2020/05/07/covidsafe_australia_contact_tracing_app_issues/"&gt;https://www.theregister.co.uk/2020/05/07/covidsafe_australia_contact_tracing_app_issues/&lt;/a&gt;&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;a href="https://www.theregister.co.uk/2020/05/07/covidsafe_australia_contact_tracing_app_issues/"&gt;https://www.theregister.co.uk/2020/05/07/covidsafe_australia_contact_tracing_app_issues/&lt;/a&gt;&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/lack-of-bug-bounty</id>
+		<title>Lack of Bug Bounty</title>
+		<link href="https://covidsafe.watch/issue-register/lack-of-bug-bounty" />
+		<updated />
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/no-customer-support-in-the-app-stores</id>
+		<title>No customer support in the app stores</title>
+		<link href="https://covidsafe.watch/issue-register/no-customer-support-in-the-app-stores" />
+		<updated />
+		<content>&lt;?# Twitter 1257513065727188992 /?&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/no-customer-support-on-social-media</id>
+		<title>No customer support on social media</title>
+		<link href="https://covidsafe.watch/issue-register/no-customer-support-on-social-media" />
+		<updated />
+		<content>&lt;?# Twitter 1257513065727188992 /?&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/no-customer-support-until-successful-registration</id>
+		<title>No customer support until successful registration</title>
+		<link href="https://covidsafe.watch/issue-register/no-customer-support-until-successful-registration" />
+		<updated />
+		<content>&lt;?# Twitter 1257507534035800066 /?&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/out-of-app-recordkeeping</id>
+		<title>Out of App Record Keeping.</title>
+		<link href="https://covidsafe.watch/issue-register/out-of-app-recordkeeping" />
+		<updated />
+		<content>&lt;p&gt;Issues relating to how the Australian Government Federal, State and Local are endorsing / compelling citizens to record information outside the COVIDSafe application.&lt;/p&gt;
+&lt;p&gt;Biosecurity Act received amendments which provide legal constraints of how information is stored during COVID and specifically its disposal.  There is no such legislation in place to cover the same conditions of collection and disposal outside the COVIDSafe Application context.&lt;/p&gt;
+&lt;h3 id="th-may-2020"&gt;15th May 2020&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;?# Twitter 1261109562498637824 /?&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Queensland &lt;em&gt;&lt;strong&gt;relaxes&lt;/strong&gt;&lt;/em&gt; lockdown constraints to enable Restaurants, Cafes, Pubs, Clubs, RSL clubs and Hotels to open doors for up to maximum 10 customers per venue. A detailed checklist provided to ensure any of the business mentioned above types must abide by before opening for trade (&lt;a href="https://www.covid19.qld.gov.au/__data/assets/pdf_file/0020/127235/COVID-Safe-Checklist-RestCafes.pdf"&gt;https://www.covid19.qld.gov.au/__data/assets/pdf_file/0020/127235/COVID-Safe-Checklist-RestCafes.pdf&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Queensland business required to keep records of customers before trade commences, specifically they are required to ask customers for their &lt;strong&gt;name, address and mobile phone number&lt;/strong&gt; of a &lt;em&gt;person&lt;/em&gt; at each table.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;No current legislation beyond Privacy Act 1988 provides any legal coverage as to what business is required to do with the information gathered during the COVID outbreak, specifically with regards to the checklist.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Businesses are less likely to provide visible terms and conditions of privacy before patrons entering the above business types, mainly, they are less likely to demonstrate to patrons how their information is likely to be used once requested.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Queensland's checklist has no relationship to COVIDSafe application, moreover should a patron have the application installed they are still required to give the same information again, despite such information existing inside the applications registration process (effectively reducing the value proposition of the COVIDSafe application).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;COVIDSafe application has had an amendment (&lt;a href="https://www.legislation.gov.au/Details/F2020L00480"&gt;https://www.legislation.gov.au/Details/F2020L00480&lt;/a&gt;) to the Biosecurity Act to provide specific coverage for how privacy and use of such data are to be used however it is also worth noting that such coverage limited to the application only. Out of Application record-keeping (using the same information as the COVIDSafe app) has no such coverage or legal constraints, effectively ensuring duplication of data lives under two sets of legal constraints.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Queensland Checklist provides no legal recourse should a business choose to use the records outside the COVID period, mainly if a business were to use such information for marketing, statistical or other reasons.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;No verification or validation of a customer's records are in place; specifically if a customer were to provide fake information, there is no explicit legal action that could be taken against the said customer(s).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;New Zealand has used a similar process by way of asking businesses to record customer information. Recently, a Subway worker found to have abused the records of a female customer by using such records to stalk her (&lt;a href="https://nakedsecurity.sophos.com/2020/05/14/woman-stalked-by-sandwich-server-via-her-covid-19-contact-tracing-info/"&gt;https://nakedsecurity.sophos.com/2020/05/14/woman-stalked-by-sandwich-server-via-her-covid-19-contact-tracing-info/&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Unclear specifically if law enforcement may or may not compel a business to provide information retained by businesses.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Business are requested to store customers in a secure manner, but no specific governance or guidance is provided on what is considered reasonably secure - Hand written records stored on a notepad, excel spreadsheet of customer information on a open terminal etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note: &lt;strong&gt;Queensland Attorney-General and Minister for Justice / Shadow Minister(s) have been notified formally for response to these set of issues.&lt;/strong&gt;&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;Issues relating to how the Australian Government Federal, State and Local are endorsing / compelling citizens to record information outside the COVIDSafe application.&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/potential-data-breach-handled-incorrectly</id>
+		<title>Potential Databreach Handled Incorrectly</title>
+		<link href="https://covidsafe.watch/issue-register/potential-data-breach-handled-incorrectly" />
+		<updated />
+		<content>&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2020/05/09: Discussion about a S3 bucket starts circulating in the community about an Amazon S3 bucket that files named &amp;quot;CovidSafeUserData&amp;quot;. Reported to ASD.Assist&amp;#64;defense.gov.au, support&amp;#64;covidsafe.gov.au.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;?# Twitter 1259103414316707840 /?&gt;
+&lt;?# Twitter 1259105952030027776 /?&gt;
+&lt;?# Twitter 1259111494072975363 /?&gt;
+&lt;ul&gt;
+&lt;li&gt;2020/05/12: support&amp;#64;covidsafe.gov.au (the &lt;a href="https://covidsafe.gov.au/.well-known/security.txt"&gt;designated security contact address&lt;/a&gt;) responded to the matter incorrectly and directed Geoff where he could download the source code of the application.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;?# Twitter 1260012514131099648 /?&gt;
+&lt;h1 id="recommended-next-steps"&gt;Recommended Next Steps&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Seperate customer support and security reporting channels. Establish a proper bug bounty.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/questionable-metrics-of-success</id>
+		<title>Questionable Metrics of Success</title>
+		<link href="https://covidsafe.watch/issue-register/questionable-metrics-of-success" />
+		<updated />
+		<content>&lt;?# Twitter 1261115581769498625 /?&gt;
+&lt;?# Twitter 1261444399705157632 /?&gt;
+&lt;?# Twitter 1261481135931928577 /?&gt;
+&lt;?# Twitter 1261549852556619777 /?&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/roadmap</id>
+		<title>What is the roadmap?</title>
+		<link href="https://covidsafe.watch/issue-register/roadmap" />
+		<updated />
+		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
+&lt;p&gt;There has been no roadmap published by the DTA. We sometimes hear through the media that an update may be coming, but we don't know what that update will contain until it is published, and then it is just the brief release notes on the app stores or we compare the decompiled app with the previous version. The only certain item that has been mentioned several times is that they are planning to integrate the Exposure Notification APIs developed by Apple and Google. But there has been no mention or discussion by the DTA on what this integration may involve.&lt;/p&gt;
+&lt;h2 id="original-twitter-thread"&gt;Original Twitter thread&lt;/h2&gt;
+&lt;?# Twitter 1258446501488889856 /?&gt;
+&lt;h2 id="senate-committee-transcript"&gt;Senate Committee transcript&lt;/h2&gt;
+&lt;p&gt;See Mr. Brugeaud's comments at the top of page 3 about being early adopters of the forthcoming Apple and Google APIs.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://parlinfo.aph.gov.au/parlInfo/download/committees/commsen/21693643-a9ab-41e2-8440-77267c6c7b37/toc_pdf/Senate%20Select%20Committee%20on%20COVID-19_2020_05_06_7691.pdf;fileType=application%2Fpdf#search=%22committees/commsen/21693643-a9ab-41e2-8440-77267c6c7b37/0000%22"&gt;https://parlinfo.aph.gov.au/parlInfo/download/committees/commsen/21693643-a9ab-41e2-8440-77267c6c7b37/toc_pdf/Senate%20Select%20Committee%20on%20COVID-19_2020_05_06_7691.pdf;fileType=application%2Fpdf#search=%22committees/commsen/21693643-a9ab-41e2-8440-77267c6c7b37/0000%22&lt;/a&gt;&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;There has been no roadmap published by the DTA. We sometimes hear through the media that an update may be coming, but we don't know what that update will contain until it is published, and then it is just the brief release notes on the app stores or we compare the decompiled app with the previous version. The only certain item that has been mentioned several times is that they are planning to integrate the Exposure Notification APIs developed by Apple and Google. But there has been no mention or discussion by the DTA on what this integration may involve.&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/rural-and-remote-australians-on-telstra-cannot-register</id>
+		<title>Rural And Remote Australians On Telstra Cannot Register</title>
+		<link href="https://covidsafe.watch/issue-register/rural-and-remote-australians-on-telstra-cannot-register" />
+		<updated />
+		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
+&lt;?# Twitter 1254499854245433344 /?&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Many rural Australians aren't able to register for the app at all.&lt;/p&gt;
+&lt;p&gt;In order to register for COVIDSafe, users need to be sent an SMS verification. This two-factor authentication (2FA) is for security purposes and in general is a good feature of the app.&lt;/p&gt;
+&lt;p&gt;But this becomes problematic if you live in an area with patchy or no mobile service. And this is the issue that many rural Australians are now facing. If you can't get the SMS, you can't use COVIDSafe.&lt;/p&gt;
+&lt;p&gt;For rural Aussies – or even just those who live in a mobile black spot – who are on plans with Vodafone and Optus, excluding prepaid, this isn't a problem. With these providers, they're able to still receive the verification text because these telcos offer SMS Over WiFi.&lt;/p&gt;
+&lt;p&gt;Unfortunately, users who are with Telstra or some Mobile virtual Network Operator (MVNO) resellers don't have the SMS over WiFi option.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://www.gizmodo.com.au/2020/05/telstra-sms-over-wifi-launch/"&gt;https://www.gizmodo.com.au/2020/05/telstra-sms-over-wifi-launch/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="resolution"&gt;Resolution&lt;/h1&gt;
+&lt;?# Twitter 1257902961780387840 /?&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;quot;Telstra customers in areas that do not have mobile coverage are unable to send or receive SMS over WiFi. We have been working to introduce this capability into the network and will now accelerate the work required. We are also working closely with the DTA on alternative methods for the COVIDSafe app to send an authentication code,&amp;quot; a Telstra spokesperson said in an email to Gizmodo Australia.&lt;/p&gt;
+&lt;p&gt;&amp;quot;The government is aware that Telstra handsets presently do not support SMS over wi-fi, meaning that those in areas with poor mobile coverage may experience challenges in completing the process to download and register the COVIDSafe App (as the process involves receiving a code via SMS),&amp;quot;a spokesperson for the Minister for Communications, Cyber Safety and the Arts, Paul Fletcher, said in an email to Gizmodo Australia.&lt;/p&gt;
+&lt;p&gt;While Telstra's statement indicated that it was working on introducing SMS Over Wifi, no time frame was given. Telstra has now confirmed with Gizmodo Australia that the feature has begun rolling out on iOS and Samsung devices as of today.&lt;/p&gt;
+&lt;p&gt;&amp;quot;SMS over WiFi updates for customers’ smartphones have gone live overnight and will roll out progressively over the next seven days. Some Telstra customers will already see the functionality available on their devices.&amp;quot; said a Telstra spokesperson in an email tp Gizmodo Australia.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://www.gizmodo.com.au/2020/04/some-rural-australians-cant-access-covidsafe-app-due-to-a-missing-telstra-feature/"&gt;https://www.gizmodo.com.au/2020/04/some-rural-australians-cant-access-covidsafe-app-due-to-a-missing-telstra-feature/&lt;/a&gt;&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;Many rural Australians aren't able to register for the app at all.&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/social-pressure-and-coersion</id>
+		<title>Social Pressure &amp; Coersion</title>
+		<link href="https://covidsafe.watch/issue-register/social-pressure-and-coersion" />
+		<updated />
+		<content>&lt;h1 id="government"&gt;Government&lt;/h1&gt;
+&lt;?# Twitter 1256403073674739712 /?&gt;
+&lt;?# Twitter 1260724611756331008 /?&gt;
+&lt;?# Twitter 1260724884738437120 /?&gt;
+&lt;?# Twitter 1261109562498637824 /?&gt;
+&lt;h1 id="companies"&gt;Companies&lt;/h1&gt;
+&lt;?# Twitter 1259725400952864768 /?&gt;
+&lt;?# Twitter 1259695834809036800 /?&gt;
+&lt;?# Twitter 1257518972972367872 /?&gt;
+&lt;?# Twitter 1258322382034366465 /?&gt;
+&lt;?# Twitter 1258670284007063552 /?&gt;
+&lt;?# Twitter 1261161464183664641 /?&gt;
+&lt;?# Twitter 1261189641396318213 /?&gt;
+&lt;?# Twitter 1261405509795495938 /?&gt;
+&lt;?# Twitter 1261555319802560512 /?&gt;
+&lt;?# Twitter 1261821386328178688 /?&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/transparency</id>
+		<title>Transparency</title>
+		<link href="https://covidsafe.watch/issue-register/transparency" />
+		<updated />
+		<content>&lt;?# Twitter 1258745850647293953 /?&gt;
+&lt;?# Twitter 1259076147276443649 /?&gt;
+&lt;?# Twitter 1260734086097670144 /?&gt;
+&lt;?# Twitter 1258306041579634688 /?&gt;
+&lt;?# Twitter 1261251106547494912 /?&gt;
+&lt;?# Raw ?&gt;
+&lt;?# Include "https://github.com/foo/bar/me.md" &gt;
+&lt;?#/ Raw ?&gt;  
+</content>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/use-of-expired-tempids</id>
+		<title>Unique IDs are broadcast long after they expire</title>
+		<link href="https://covidsafe.watch/issue-register/use-of-expired-tempids" />
+		<updated />
+		<content>&lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
+&lt;p&gt;There are two issues in the mobile COVIDSafe apps that allow for Unique IDs / TempIDs to be broadcast after they expire.&lt;/p&gt;
+&lt;p&gt;The first issue relates to how the iOS app obtains new TempIDs.&lt;/p&gt;
+&lt;p&gt;The second issue identifies the parts of the codebase where the apps continue to use TempIDs that it already knows have expired.&lt;/p&gt;
+&lt;p&gt;The use of TempIDs beyond their 2-hour lifespan may make it easier for third-parties to track COVIDSafe app users.&lt;/p&gt;
+&lt;h1 id="obtaining-new-tempids-on-ios"&gt;Obtaining new TempIDs on iOS&lt;/h1&gt;
+&lt;p&gt;When requesting a TempID from the National COVIDSafe Data Store, the response contains three fields:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The TempID itself.&lt;/li&gt;
+&lt;li&gt;A refresh time, which is 1 hour from the current time, after which the application should attempt to obtain a new TempID.&lt;/li&gt;
+&lt;li&gt;An expiry time, which is 2 hours from the current time, after which the application must cease to use this TempID.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This interpretation of these fields is supported by the Android codebase, which includes the comment &lt;code&gt;// Only attempt to write BM back to peripheral if it is still valid&lt;/code&gt; in &lt;a href="https://github.com/AU-COVIDSafe/mobile-android/blob/b827cf3ccef72a3d38c6fc37466a99868823540f/app/src/main/java/au/gov/health/covidsafe/streetpass/StreetPassWorker.kt#L586"&gt;StreetPassWorker.kt#L586&lt;/a&gt;, as well as the various logging messages in both the iOS and Android codebase.&lt;/p&gt;
+&lt;p&gt;In the Android app, the app appears to set up a timer to obtain a new TempID after the refresh time is reached. However, the iOS app does not do this, and only attempts to obtain a new TempID once the &lt;em&gt;expiry&lt;/em&gt; time is reached.&lt;/p&gt;
+&lt;p&gt;This means that if there are any intermittent communications issues, such as a loss of network connectivity or server outage, the Android app has a whole hour as a grace window to attempt to re-establish communications and obtain a new TempID. However, the iOS app has no such grace window, and immediately has only two choices - broadcast an expired TempID, or broadcast nothing.&lt;/p&gt;
+&lt;h1 id="using-expired-tempids"&gt;Using Expired TempIDs&lt;/h1&gt;
+&lt;p&gt;In both these codebases, the app will continue to broadcast an expired TempID after it has expired, if a new one cannot be obtained.&lt;/p&gt;
+&lt;p&gt;In the Android codebase, this is due to the function &lt;code&gt;bmValid&lt;/code&gt;, which is supposed to check the validity of a Broadcast Message (BM), i.e. a TempID, always returning true in &lt;a href="https://github.com/AU-COVIDSafe/mobile-android/blob/696e4ed498623a763b3fefc6982d2567691ea48d/app/src/main/java/au/gov/health/covidsafe/Utils.kt#L245"&gt;Utils.kt#L245&lt;/a&gt;, &lt;em&gt;even if it has determined just two lines above that the TempID has indeed already expired.&lt;/em&gt; Therefore, if the app determines that the TempID has expired, it will nevertheless continue to re-use the old TempID indefinitely.&lt;/p&gt;
+&lt;p&gt;In the iOS codebase, this is due to the function &lt;code&gt;fetchTempIdFromApi&lt;/code&gt; returning the previously-acquired TempID if any error is encountered talking to the National COVIDSafe Data Store. This behaviour is defined in &lt;a href="https://github.com/AU-COVIDSafe/mobile-ios/blob/3640e52eb2c29b55a8daab304c214750c389d1b2/CovidSafe/EncounterMessageManager.swift#L97-L107"&gt;EncounterMessageManager.swift#L97-107&lt;/a&gt;. This function is called by &lt;code&gt;getAdvertisementPayload&lt;/code&gt; when the TempID has expired, and can therefore return a &amp;quot;new&amp;quot; token whose expiry is never re-evaluated. Therefore, if the app determines that the TempID has expired, and fails to obtain a new TempID, it will nevertheless continue to re-use the old TempID indefinitely.&lt;/p&gt;
+&lt;h1 id="relevance-to-privacy-policy"&gt;Relevance to Privacy Policy&lt;/h1&gt;
+&lt;p&gt;Combining these two issues means that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Android app has only an hour tolerance for intermittent networking or client-server communication, and if the issue persists beyond the expiry then it will continue to broadcast an expired TempID indefinitely. If the issue is resolved between the refresh and expiry times then the app still performs as expected.&lt;/li&gt;
+&lt;li&gt;The iOS app has &lt;em&gt;zero&lt;/em&gt; tolerance for intermittent networking or client-server communication, if the issue persists beyond the expiry then it will continue to broadcast an expired TempID indefinitely.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This appears to be in breach of the &lt;a href="https://www.health.gov.au/using-our-websites/privacy/privacy-policy-for-covidsafe-app#when-you-use-covidsafe"&gt;Privacy Policy for COVIDSafe App&lt;/a&gt;, which clearly states that:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An encrypted user ID will be created every 2 hours. This will be logged in the National COVIDSafe data store (&lt;strong&gt;data store&lt;/strong&gt;), operated by the Digital Transformation Agency, in case you need to be identified for contact tracing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Quite clearly, from the above behaviours, an encrypted user ID may not necessarily be created every 2 hours, such as users on iPods or iPads away from their home Wi-Fi, users with Airplane Mode in cinemas, users in shopping centers or other building that have weak cellular signals due to thick walls or underground levels, server outages, connections pending captive portals, etc.&lt;/p&gt;
+&lt;p&gt;This also appears to run somewhat contrary to the &lt;a href="https://www.health.gov.au/resources/publications/covidsafe-application-privacy-impact-assessment"&gt;Privacy Impact Assessment&lt;/a&gt;, which states:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;8.17 We understand that the National COVIDSafe Data Store will automatically generate new Unique IDs for each User every two hours and send these new Unique IDs to the User’s App.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;8.18 The App will only accept the new Unique IDs if it is open and running. If the App successfully accepts the new Unique ID, an automatic message will be generated and sent back to the National COVIDSafe Data Store. This message will only effectively indicate a “yes (new Unique ID successfully delivered)” response to the National COVIDSafe Data Store. If the App is not open and running, it will not be able to accept a new Unique ID. It will continue to store the previous Unique ID and use this when the App is opened, until a new Unique ID is generated and accepted.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="impact"&gt;Impact&lt;/h1&gt;
+&lt;p&gt;As has been interpreted from the code and has also been observed from performing functional testing on a running app:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;There are a range of actual and potential scenarios in which the app is open and running, but is still not able to accept a new Unique ID.&lt;/li&gt;
+&lt;li&gt;The iOS app does not even make a best-effort attempt to obtain new Unique IDs before the old one has expired.&lt;/li&gt;
+&lt;li&gt;Both the iOS and Android apps can (and do) broadcast expired TempIDs.&lt;/li&gt;
+&lt;li&gt;In these scenarios, users broadcasting TempIDs longer than their expiry become quite easy to track with third-party tools, which may amount to a breach of privacy.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="recommendations"&gt;Recommendations&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Prevent the broadcast of expired TempIDs,&lt;/li&gt;
+&lt;li&gt;Display a warning to the user to connect to the internet if the TempID has expired and the app is unable to obtain a fresh one,&lt;/li&gt;
+&lt;li&gt;Restore the original Singapore (OpenTrace) behaviour of downloading a large batch of TempIDs and cycling through them, instead of downloading them one at a time, and&lt;/li&gt;
+&lt;li&gt;On iOS, make use of the window between the TempID refresh time and its expiry time to obtain a new TempID.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;17th May 2020: Reported to support&amp;#64;covidsafe.gov.au&lt;/li&gt;
+&lt;li&gt;18th May 2020: Response confirming receipt and that this has been passed on to the development team.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		<summary>&lt;p&gt;There are two issues in the mobile COVIDSafe apps that allow for Unique IDs / TempIDs to be broadcast after they expire.&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>https://covidsafe.watch/issue-register/you-have-covid-text-caused-public-panic</id>
+		<title>You have COVID text caused public panic</title>
+		<link href="https://covidsafe.watch/issue-register/you-have-covid-text-caused-public-panic" />
+		<updated />
+		<content>&lt;h1 id="timeline"&gt;Timeline&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2020/04/26: Identified that the text in the application could potentially cause public panic:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When a user taps the “upload my data” button the next screen asserts “You have tested positive for COVID-19” which may be a false assertion and cause confusion. This text needs changing. Since the user is only supposed to upload data when asked to by a health official (see the previous screen), this statement should reiterate that data should not be uploaded UNLESS you have tested positive. It’s possible that uploading data without having tested positive will result in unnecessary and false notifications being sent to other users&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From: &lt;a href="https://docs.google.com/document/d/17GuApb1fG3Bn0_DVgDQgrtnd_QO3foBl7NVb8vaWeKc/edit"&gt;https://docs.google.com/document/d/17GuApb1fG3Bn0_DVgDQgrtnd_QO3foBl7NVb8vaWeKc/edit&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2020/04/28: Mother-of-two Holly Donovan from Frankston panicked when she thought the app had diagnosed her with coronavirus.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;?# Twitter 1255671317145108482 /?&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Confusion and privacy concerns have grown over the federal government's COVIDSafe app, with one Melbourne woman saying a puzzling message led her to believe she had contracted the virus.&lt;/p&gt;
+&lt;p&gt;Mother-of-two Holly Donovan from Frankston panicked when she thought the app had diagnosed her with coronavirus.&lt;/p&gt;
+&lt;p&gt;The message &amp;quot;You have tested positive for COVID-19&amp;quot; appeared when she tapped the button &amp;quot;has a heath official asked you to upload your data?&amp;quot;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From: &lt;a href="https://www.9news.com.au/national/covidsafe-app-melbourne-woman-feared-coronavirus-after-confusing-message/e9146501-6bbd-4509-b89a-406b2b98ed2a"&gt;https://www.9news.com.au/national/covidsafe-app-melbourne-woman-feared-coronavirus-after-confusing-message/e9146501-6bbd-4509-b89a-406b2b98ed2a&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2020/05/04: V1.0.15 released which removed the text. Time to resolution 10 days.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;?# Twitter 1258014478978842625 /?&gt;
+</content>
+		<summary>&lt;p&gt;When a user taps the “upload my data” button the next screen asserts “You have tested positive for COVID-19” which may be a false assertion and cause confusion. This text needs changing. Since the user is only supposed to upload data when asked to by a health official (see the previous screen), this statement should reiterate that data should not be uploaded UNLESS you have tested positive. It’s possible that uploading data without having tested positive will result in unnecessary and false notifications being sent to other users&lt;/p&gt;</summary>
 	</entry>
 </feed>
